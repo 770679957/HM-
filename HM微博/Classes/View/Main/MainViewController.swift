@@ -17,6 +17,13 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         addChildViewControllers()
         setupComposedButton()
+        
+        NetworkTools.sharedTools.request(method: HMRequestMethod.POST, URLString: "http://httpbin.org/post", parameters: ["name" : "zhangsan" as AnyObject,"age" : 18 as AnyObject]){(result,error)->() in
+            print("\(result)")
+            
+        }
+        
+        //NetworkTools.sharedTools.request(URLString: "http://www.weather.com.cn/data/sk/101010100.html", parameters: nil)
 
     }
     

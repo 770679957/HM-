@@ -18,7 +18,8 @@
 		3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73D2269556500B3B4FA /* VisitorTableViewController.swift */; };
 		3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73F226957ED00B3B4FA /* VisitorView.swift */; };
 		3B59E74222695ACF00B3B4FA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E74122695ACF00B3B4FA /* Podfile */; };
-		3B59E7462269943300B3B4FA /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E7452269943300B3B4FA /* SnapKit.framework */; };
+		3B59E74E2269D0EF00B3B4FA /* Pods_HM微博.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */; };
+		3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E74F2269D25100B3B4FA /* NetworkTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,10 @@
 		3B59E74122695ACF00B3B4FA /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E7452269943300B3B4FA /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B59E7492269CAB200B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B59E74B2269CAFC00B3B4FA /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B59E74F2269D25100B3B4FA /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		524B516D3D8B8012297499BF /* Pods-HM微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.debug.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.debug.xcconfig"; sourceTree = "<group>"; };
 		62B69482DBAB0BD45CFCEFAE /* Pods-HM微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.release.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.release.xcconfig"; sourceTree = "<group>"; };
 		68D0437CB438AB132CB4F650 /* Pods_HM__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HM__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B59E7462269943300B3B4FA /* SnapKit.framework in Frameworks */,
+				3B59E74E2269D0EF00B3B4FA /* Pods_HM微博.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +110,7 @@
 		3B59E72722680CAD00B3B4FA /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				3B59E74F2269D25100B3B4FA /* NetworkTools.swift */,
 				3B59E7392268156700B3B4FA /* Extension */,
 			);
 			path = "Tools(工具)";
@@ -190,6 +196,9 @@
 		AC49D7E43CBD5EFB9B03EBA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */,
+				3B59E74B2269CAFC00B3B4FA /* AFNetworking.framework */,
+				3B59E7492269CAB200B3B4FA /* Pods_HM微博.framework */,
 				3B59E7452269943300B3B4FA /* SnapKit.framework */,
 				3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */,
 				68D0437CB438AB132CB4F650 /* Pods_HM__.framework */,
@@ -217,7 +226,7 @@
 				3B59E70C2268042C00B3B4FA /* Sources */,
 				3B59E70D2268042C00B3B4FA /* Frameworks */,
 				3B59E70E2268042C00B3B4FA /* Resources */,
-				22412CBC8D5EE6F6B9C7EF53 /* [CP] Embed Pods Frameworks */,
+				AB477B17DA605E51FF12E5EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,7 +283,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22412CBC8D5EE6F6B9C7EF53 /* [CP] Embed Pods Frameworks */ = {
+		36066D71E7274DCBF17461FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HM微博-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB477B17DA605E51FF12E5EE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,28 +333,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HM微博/Pods-HM微博-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36066D71E7274DCBF17461FB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HM微博-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -333,6 +342,7 @@
 			files = (
 				3B59E73822680DC700B3B4FA /* ProfileTableViewController.swift in Sources */,
 				3B59E73222680D8400B3B4FA /* HomeTableViewController.swift in Sources */,
+				3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
 				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,
