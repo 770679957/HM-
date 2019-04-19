@@ -15,6 +15,10 @@
 		3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73522680DB700B3B4FA /* MessageTableViewController.swift */; };
 		3B59E73822680DC700B3B4FA /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73722680DC700B3B4FA /* ProfileTableViewController.swift */; };
 		3B59E73B226815A100B3B4FA /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73A226815A100B3B4FA /* UIButton+Extension.swift */; };
+		3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73D2269556500B3B4FA /* VisitorTableViewController.swift */; };
+		3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73F226957ED00B3B4FA /* VisitorView.swift */; };
+		3B59E74222695ACF00B3B4FA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E74122695ACF00B3B4FA /* Podfile */; };
+		3B59E74422695C4600B3B4FA /* Pods_HM微博.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,13 @@
 		3B59E73522680DB700B3B4FA /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		3B59E73722680DC700B3B4FA /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		3B59E73A226815A100B3B4FA /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		3B59E73D2269556500B3B4FA /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
+		3B59E73F226957ED00B3B4FA /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		3B59E74122695ACF00B3B4FA /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		524B516D3D8B8012297499BF /* Pods-HM微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.debug.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.debug.xcconfig"; sourceTree = "<group>"; };
+		62B69482DBAB0BD45CFCEFAE /* Pods-HM微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.release.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.release.xcconfig"; sourceTree = "<group>"; };
+		68D0437CB438AB132CB4F650 /* Pods_HM__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HM__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B59E74422695C4600B3B4FA /* Pods_HM微博.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +56,11 @@
 		3B59E7072268042C00B3B4FA = {
 			isa = PBXGroup;
 			children = (
+				3B59E74122695ACF00B3B4FA /* Podfile */,
 				3B59E7122268042C00B3B4FA /* HM微博 */,
 				3B59E7112268042C00B3B4FA /* Products */,
+				BD72BE83E6870C9EEFD37658 /* Pods */,
+				AC49D7E43CBD5EFB9B03EBA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +140,7 @@
 		3B59E72B22680CAD00B3B4FA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3B59E73C2269553200B3B4FA /* Visitor */,
 				3B59E72F22680D5B00B3B4FA /* MainViewController.swift */,
 			);
 			path = Main;
@@ -161,6 +177,33 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		3B59E73C2269553200B3B4FA /* Visitor */ = {
+			isa = PBXGroup;
+			children = (
+				3B59E73D2269556500B3B4FA /* VisitorTableViewController.swift */,
+				3B59E73F226957ED00B3B4FA /* VisitorView.swift */,
+			);
+			path = Visitor;
+			sourceTree = "<group>";
+		};
+		AC49D7E43CBD5EFB9B03EBA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */,
+				68D0437CB438AB132CB4F650 /* Pods_HM__.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD72BE83E6870C9EEFD37658 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				524B516D3D8B8012297499BF /* Pods-HM微博.debug.xcconfig */,
+				62B69482DBAB0BD45CFCEFAE /* Pods-HM微博.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B59E7222268043200B3B4FA /* Build configuration list for PBXNativeTarget "HM微博" */;
 			buildPhases = (
+				36066D71E7274DCBF17461FB /* [CP] Check Pods Manifest.lock */,
 				3B59E70C2268042C00B3B4FA /* Sources */,
 				3B59E70D2268042C00B3B4FA /* Frameworks */,
 				3B59E70E2268042C00B3B4FA /* Resources */,
+				22412CBC8D5EE6F6B9C7EF53 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,11 +264,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B59E74222695ACF00B3B4FA /* Podfile in Resources */,
 				3B59E71B2268043200B3B4FA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22412CBC8D5EE6F6B9C7EF53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HM微博/Pods-HM微博-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HM微博/Pods-HM微博-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36066D71E7274DCBF17461FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HM微博-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B59E70C2268042C00B3B4FA /* Sources */ = {
@@ -234,7 +327,9 @@
 				3B59E73222680D8400B3B4FA /* HomeTableViewController.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
+				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,
 				3B59E73422680D9B00B3B4FA /* DiscoverTableViewController.swift in Sources */,
+				3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */,
 				3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */,
 				3B59E73B226815A100B3B4FA /* UIButton+Extension.swift in Sources */,
 			);
@@ -361,6 +456,7 @@
 		};
 		3B59E7232268043200B3B4FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 524B516D3D8B8012297499BF /* Pods-HM微博.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -380,6 +476,7 @@
 		};
 		3B59E7242268043200B3B4FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B69482DBAB0BD45CFCEFAE /* Pods-HM微博.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
