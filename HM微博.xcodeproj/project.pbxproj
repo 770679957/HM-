@@ -18,7 +18,7 @@
 		3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73D2269556500B3B4FA /* VisitorTableViewController.swift */; };
 		3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E73F226957ED00B3B4FA /* VisitorView.swift */; };
 		3B59E74222695ACF00B3B4FA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E74122695ACF00B3B4FA /* Podfile */; };
-		3B59E74422695C4600B3B4FA /* Pods_HM微博.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */; };
+		3B59E7462269943300B3B4FA /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E7452269943300B3B4FA /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +36,7 @@
 		3B59E73F226957ED00B3B4FA /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		3B59E74122695ACF00B3B4FA /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B59E7452269943300B3B4FA /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524B516D3D8B8012297499BF /* Pods-HM微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.debug.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.debug.xcconfig"; sourceTree = "<group>"; };
 		62B69482DBAB0BD45CFCEFAE /* Pods-HM微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HM微博.release.xcconfig"; path = "Target Support Files/Pods-HM微博/Pods-HM微博.release.xcconfig"; sourceTree = "<group>"; };
 		68D0437CB438AB132CB4F650 /* Pods_HM__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HM__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B59E74422695C4600B3B4FA /* Pods_HM微博.framework in Frameworks */,
+				3B59E7462269943300B3B4FA /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +190,7 @@
 		AC49D7E43CBD5EFB9B03EBA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B59E7452269943300B3B4FA /* SnapKit.framework */,
 				3B59E74322695C4600B3B4FA /* Pods_HM微博.framework */,
 				68D0437CB438AB132CB4F650 /* Pods_HM__.framework */,
 			);
@@ -281,12 +283,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HM微博/Pods-HM微博-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

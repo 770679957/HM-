@@ -3,5 +3,8 @@ use_frameworks!
 
 target 'HM微博' do
 pod 'SnapKit'
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
 
 end
