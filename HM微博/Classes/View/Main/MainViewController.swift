@@ -19,7 +19,7 @@ class MainViewController: UITabBarController {
         setupComposedButton()
         
         NetworkTools.sharedTools.request(method: HMRequestMethod.POST, URLString: "http://httpbin.org/post", parameters: ["name" : "zhangsan" as AnyObject,"age" : 18 as AnyObject]){(result,error)->() in
-            print("\(result)")
+           // print("\(result)")
             
         }
         
