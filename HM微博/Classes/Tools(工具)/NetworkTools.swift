@@ -22,6 +22,14 @@ class NetworkTools: AFHTTPSessionManager {
     private let appKey = "2410496155"
     private let appSecret = "42f030373ec9c88c03b841da5742eddd"
     private let redirectUrl = "http://www.baidu.com"
+    //返回token字典
+    private var tokenDict:[String:AnyObject]? {
+       //判断token是否有效
+        if let token = UserAccountViewModel.sharedUserAccount.account?.access_token {
+            return["access_token":token as AnyObject]
+        }
+        return nil
+    }
     
     //网络请求完成回调
     typealias  HMRequestCallBack = (Any?,Error?)->()//新修改
@@ -32,6 +40,9 @@ class NetworkTools: AFHTTPSessionManager {
         return tools
         
     }()
+    
+
+    
 
 }
 /// 网络请求
@@ -84,14 +95,32 @@ extension NetworkTools {
         
     }
 }
-
+//-用户的相关方法
 extension NetworkTools {
     //加载用户信息
-    func loadUserInfo(uid:String,accessToken:String,finished:@escaping HMRequestCallBack) {
-        let urlString = "https://api.weibo.com/2/users/show.json"
-        let params = ["uid":uid,"access_token":accessToken]
-        request(method: .GET, URLString: urlString, parameters: params as [String : AnyObject], finished: finished)
+    func loadUserInfo(uid: String,finished:@escaping HMRequestCallBack) {
         
+        //获取token 字典
+        guard var params = tokenDict else {
+            //如果字典为空，通知调用方无效
+            finished(nil,NSError(domain: "cn.itcast.error", code: -1001, userInfo: ["message":"token 为空"]))
+            
+            return
+            
+        }
+        
+        //处理网络参数
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        
+        params["uid"] = uid as AnyObject
+        request(method: .GET, URLString: urlString, parameters: params as [String : AnyObject], finished: finished)
     }
+//    func loadUserInfo(uid:String,accessToken:String,finished:@escaping HMRequestCallBack) {
+//        let urlString = "https://api.weibo.com/2/users/show.json"
+//        let params = ["uid":uid,"access_token": accessToken]
+//        request(method: .GET, URLString: urlString, parameters: params as [String : AnyObject], finished: finished)
+//
+//    }
     
 }
+

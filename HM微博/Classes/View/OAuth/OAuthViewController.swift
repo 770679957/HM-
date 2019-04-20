@@ -63,29 +63,40 @@ extension OAuthViewController: UIWebViewDelegate {
         }
         //从query字符串提取code 后面的授权码
         let code = query.substring(from: "code=".endIndex)
-        print("授权码是" + code)
+        //print("授权码是" + code)
         
         //加载 accessToke
-        NetworkTools.sharedTools.loadAccessToken(code: code) {
-            (result,error) -> () in
-            //判断错误
-            if error != nil {
-                print("出错了")
-                return
+        UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code){ (isSuccessed) -> () in
+        //UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code) { (isSuccessed) -> () in
+            //finished的完整代码
+            if isSuccessed {
+                print("成功了")
+                //print(UserAccountViewModel.sharedUserAccount.account)
+            } else {
+                print("失败了")
             }
-            //输出结果
-            //print(result)
             
-            let account = UserAccount(dict: result as! [String:AnyObject])
-            print(account)
-            
-            self.loadUserInfo(account: account)
         }
+//        NetworkTools.sharedTools.loadAccessToken(code: code) {
+//            (result,error) -> () in
+//            //判断错误
+//            if error != nil {
+//                print("出错了")
+//                return
+//            }
+//            //输出结果
+//            //print(result)
+//
+//            let account = UserAccount(dict: result as! [String:AnyObject])
+//            //print(account)
+//
+//            self.loadUserInfo(account: account)
+//        }
         return false
     }
     
     private func loadUserInfo(account:UserAccount){
-        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!, accessToken: account.access_token!) { (result, error) in
+        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!) { (result, error) in
             if error != nil {
                 print("加载用户出错了")
                 return
@@ -101,7 +112,7 @@ extension OAuthViewController: UIWebViewDelegate {
                 //将用户信息保存
                 account.screen_name = dict["screen_name"] as? String
                 account.avatar_large = dict["avatar_large"] as? String
-                print(account)
+                //print(account)
                 
             }
         }

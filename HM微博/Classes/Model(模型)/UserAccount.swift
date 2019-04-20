@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserAccount: NSObject {
+class UserAccount: NSObject, NSCoding {
     /// 用于调用access_token，接口获取授权后的access token
     @objc var access_token:String?
     //当前授权用户的UID
@@ -39,5 +39,38 @@ class UserAccount: NSObject {
         let keys = ["access_token","expires_in","expiresDate","uid","screen_name", "avatar_large"]
         return dictionaryWithValues(forKeys: keys).description
     }
+    
+    // MARK: - `键值`归档和解档
+    /// 归档 - 在把当前对象保存到磁盘前，将对象编码成二进制数据
+    ///
+    /// - parameter aCoder: 编码器
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(access_token, forKey: "access_token")
+        aCoder.encode(expiresDate, forKey: "expiresDate")
+        aCoder.encode(uid, forKey: "uid")
+        aCoder.encode(screen_name, forKey: "screen_name")
+        aCoder.encode(avatar_large, forKey: "avatar_large")
+    }
+    
+    ///解档 - 从磁盘加载二进制文件，转换成对象时调用
+    /// - parameter aDecoder: 解码器
+    ///
+    /// - returns: 当前对象
+    required init?(coder aDecoder: NSCoder) {
+        access_token = aDecoder.decodeObject(forKey: "access_token") as?String
+        expiresDate = aDecoder.decodeObject(forKey: "expiresDate") as? NSDate
+        uid = aDecoder.decodeObject(forKey: "uid") as? String
+        screen_name = aDecoder.decodeObject(forKey: "screen_name") as? String
+        avatar_large = aDecoder.decodeObject(forKey: "avatar_large") as? String
+    }
+    
+    func saveUserAccount() {
+        //保存路径
+        var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
+        path = (path as NSString).appendingPathComponent("account.plist")
+        //print(path)
+        NSKeyedArchiver.archiveRootObject(self, toFile: path)
+    }
+    
 
 }

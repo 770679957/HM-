@@ -11,7 +11,7 @@ import UIKit
 class VisitorTableViewController: UITableViewController {
     
     //用户登录标记
-    private var userLogon = false
+    var userLogon = UserAccountViewModel.sharedUserAccount.userLogon
     //访客视图
     var visitorView:VisitorView?
     override func loadView() {
@@ -21,7 +21,7 @@ class VisitorTableViewController: UITableViewController {
     }
     
     //设置访客视图
-    private func setupVisitorView() {
+     func setupVisitorView() {
         //替换根视图
         //view = VisitorView()
         //view.backgroundColor = UIColor.white
