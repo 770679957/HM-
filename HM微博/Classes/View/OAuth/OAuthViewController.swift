@@ -78,9 +78,35 @@ extension OAuthViewController: UIWebViewDelegate {
             
             let account = UserAccount(dict: result as! [String:AnyObject])
             print(account)
+            
+            self.loadUserInfo(account: account)
         }
         return false
     }
+    
+    private func loadUserInfo(account:UserAccount){
+        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!, accessToken: account.access_token!) { (result, error) in
+            if error != nil {
+                print("加载用户出错了")
+                return
+            }else{
+                print("加载用户成功了了")
+                guard let dict = result as? [String:AnyObject] else {
+                    
+                    print("格式错误")
+                    
+                    return
+                }
+
+                //将用户信息保存
+                account.screen_name = dict["screen_name"] as? String
+                account.avatar_large = dict["avatar_large"] as? String
+                print(account)
+                
+            }
+        }
+    }
+    
     
 
 }

@@ -22,8 +22,12 @@ class UserAccount: NSObject {
     }
     //过期日期
     @objc var expiresDate:NSDate?
+    //用户名称
+    @objc var screen_name:String?
+    //用户头像地址
+    @objc var avatar_large:String?
     
-    init(dict:[String:AnyObject]) {
+    @objc init(dict:[String:AnyObject]) {
         super.init()
         setValuesForKeys(dict)
     }
@@ -32,7 +36,7 @@ class UserAccount: NSObject {
     }
     
     override var description: String {
-        let keys = ["access_token","expires_in","expiresDate","uid"]
+        let keys = ["access_token","expires_in","expiresDate","uid","screen_name", "avatar_large"]
         return dictionaryWithValues(forKeys: keys).description
     }
 

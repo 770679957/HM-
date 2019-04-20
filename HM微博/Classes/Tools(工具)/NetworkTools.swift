@@ -83,6 +83,15 @@ extension NetworkTools {
         request(method: .POST, URLString: urlString, parameters: params as [String : AnyObject], finished: finished)
         
     }
-    
+}
+
+extension NetworkTools {
+    //加载用户信息
+    func loadUserInfo(uid:String,accessToken:String,finished:@escaping HMRequestCallBack) {
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let params = ["uid":uid,"access_token":accessToken]
+        request(method: .GET, URLString: urlString, parameters: params as [String : AnyObject], finished: finished)
+        
+    }
     
 }
