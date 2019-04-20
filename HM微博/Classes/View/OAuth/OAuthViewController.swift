@@ -65,7 +65,7 @@ extension OAuthViewController: UIWebViewDelegate {
         let code = query.substring(from: "code=".endIndex)
         print("授权码是" + code)
         
-        //加载 accessToken
+        //加载 accessToke
         NetworkTools.sharedTools.loadAccessToken(code: code) {
             (result,error) -> () in
             //判断错误
@@ -73,9 +73,11 @@ extension OAuthViewController: UIWebViewDelegate {
                 print("出错了")
                 return
             }
-            
             //输出结果
-            print(result)
+            //print(result)
+            
+            let account = UserAccount(dict: result as! [String:AnyObject])
+            print(account)
         }
         return false
     }

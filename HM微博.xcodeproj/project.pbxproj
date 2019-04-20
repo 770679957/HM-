@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B13CE7F226B1BAF00448C81 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13CE7E226B1BAF00448C81 /* UserAccount.swift */; };
 		3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E7132268042C00B3B4FA /* AppDelegate.swift */; };
 		3B59E71B2268043200B3B4FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E71A2268043200B3B4FA /* Assets.xcassets */; };
 		3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E72F22680D5B00B3B4FA /* MainViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B13CE7E226B1BAF00448C81 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		3B59E7102268042C00B3B4FA /* HM微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HM微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E7132268042C00B3B4FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B59E71A2268043200B3B4FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		3B59E72622680CAD00B3B4FA /* Model(模型) */ = {
 			isa = PBXGroup;
 			children = (
+				3B13CE7E226B1BAF00448C81 /* UserAccount.swift */,
 			);
 			path = "Model(模型)";
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,
 				3B59E73422680D9B00B3B4FA /* DiscoverTableViewController.swift in Sources */,
 				3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */,
+				3B13CE7F226B1BAF00448C81 /* UserAccount.swift in Sources */,
 				3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */,
 				3B696A53226ADC240002AEFF /* OAuthViewController.swift in Sources */,
 				3B59E73B226815A100B3B4FA /* UIButton+Extension.swift in Sources */,
