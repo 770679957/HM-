@@ -18,6 +18,11 @@ enum HMRequestMethod:String {
 
 class NetworkTools: AFHTTPSessionManager {
     
+    //应用程序信息
+    private let appKey = "2410496155"
+    private let appSecret = "42f030373ec9c88c03b841da5742eddd"
+    private let redirectUrl = "http://www.baidu.com"
+    
     //网络请求完成回调
     typealias  HMRequestCallBack = (Any?,Error?)->()//新修改
     //单例
@@ -48,9 +53,22 @@ extension NetworkTools {
         {
             get(URLString, parameters: parameters, progress: nil, success: success,failure:failure)
         }
+    
         if method==HMRequestMethod.POST
         {
             post(URLString, parameters: parameters, progress: nil, success: success,failure:failure)
         }
     }
+}
+
+//// MARK: - OAuth 相关方法
+extension NetworkTools {
+    //OAuth授权 URL
+    var OAuthURL:NSURL {
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
+        
+        return NSURL(string: urlString)!
+        
+    }
+    
 }

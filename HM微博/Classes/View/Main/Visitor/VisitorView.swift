@@ -44,7 +44,7 @@ class VisitorView: UIView {
         return label
     }()
     //注册按钮
-    private lazy var registerButton:UIButton = {
+    public lazy var registerButton:UIButton = {
         let button = UIButton()
         //设置普通状态下按钮文字
         button.setTitle("注册", for: .normal)
@@ -55,7 +55,7 @@ class VisitorView: UIView {
         return button
     }()
     //登录按钮
-    private lazy var loginButton:UIButton = {
+    public lazy var loginButton:UIButton = {
         let button = UIButton()
         button.setTitle("登录", for: .normal)
         button.setTitleColor(UIColor.orange, for: .normal)
