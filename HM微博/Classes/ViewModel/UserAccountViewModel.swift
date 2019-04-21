@@ -10,6 +10,11 @@ import Foundation
 class UserAccountViewModel {
     //用户模型
     var account:UserAccount?
+    //用户头像
+    var avatarUrl: NSURL{
+        
+        return NSURL(string: account?.avatar_large ?? "")!
+    }
     
     /// 单例 - 避免重复从沙盒加载归档文件，提高效率，让 access_token 便于被访问到
     static let sharedUserAccount = UserAccountViewModel()
