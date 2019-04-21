@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3B13CE7F226B1BAF00448C81 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13CE7E226B1BAF00448C81 /* UserAccount.swift */; };
 		3B13CE81226B5D9800448C81 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13CE80226B5D9800448C81 /* UserAccountViewModel.swift */; };
+		3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D4E226C188F0027C83E /* NewFeatureViewController.swift */; };
+		3B4D4D51226C5A7D0027C83E /* NewFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D50226C5A7D0027C83E /* NewFeatureCell.swift */; };
 		3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E7132268042C00B3B4FA /* AppDelegate.swift */; };
 		3B59E71B2268043200B3B4FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E71A2268043200B3B4FA /* Assets.xcassets */; };
 		3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E72F22680D5B00B3B4FA /* MainViewController.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		3B13CE7E226B1BAF00448C81 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		3B13CE80226B5D9800448C81 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		3B4D4D4E226C188F0027C83E /* NewFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
+		3B4D4D50226C5A7D0027C83E /* NewFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureCell.swift; sourceTree = "<group>"; };
 		3B59E7102268042C00B3B4FA /* HM微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HM微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E7132268042C00B3B4FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B59E71A2268043200B3B4FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4D4D4D226C181D0027C83E /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				3B4D4D4E226C188F0027C83E /* NewFeatureViewController.swift */,
+				3B4D4D50226C5A7D0027C83E /* NewFeatureCell.swift */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
 		3B59E7072268042C00B3B4FA = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +168,7 @@
 		3B59E72B22680CAD00B3B4FA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3B4D4D4D226C181D0027C83E /* NewFeature */,
 				3B59E73C2269553200B3B4FA /* Visitor */,
 				3B59E72F22680D5B00B3B4FA /* MainViewController.swift */,
 			);
@@ -358,11 +372,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B13CE81226B5D9800448C81 /* UserAccountViewModel.swift in Sources */,
+				3B4D4D51226C5A7D0027C83E /* NewFeatureCell.swift in Sources */,
 				3B59E73822680DC700B3B4FA /* ProfileTableViewController.swift in Sources */,
 				3B59E73222680D8400B3B4FA /* HomeTableViewController.swift in Sources */,
 				3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
+				3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */,
 				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,
 				3B59E73422680D9B00B3B4FA /* DiscoverTableViewController.swift in Sources */,
 				3B59E740226957ED00B3B4FA /* VisitorView.swift in Sources */,

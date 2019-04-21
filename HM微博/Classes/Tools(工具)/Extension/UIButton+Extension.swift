@@ -22,6 +22,15 @@ extension UIButton {
         sizeToFit()
     }
     
+    convenience init(title:String,color:UIColor,backImageName:String)
+    {
+        self.init()
+        setTitle(title, for: .normal)
+        setTitleColor(color, for: .normal)
+        setBackgroundImage(UIImage(named:backImageName), for: .normal)
+        sizeToFit()
+    }
+    
     
     
 }
