@@ -71,11 +71,11 @@ extension AppDelegate{
         //当前的版本
         let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         let version = Double(currentVersion)!
-        print("当前版本\(version)")
+        //print("当前版本\(version)")
         // 2. `之前`的版本，把当前版本保存在用户偏好 - 如果 key 不存在，返回 0
         let sandboxVersionKey = "sandboxVersionKey"
         let sandboxVersion = UserDefaults.standard.double(forKey: sandboxVersionKey)
-        print("之前版本 \(sandboxVersion)")
+        //print("之前版本 \(sandboxVersion)")
         // 3. 保存当前版本
         UserDefaults.standard.set(version, forKey:sandboxVersionKey)
         

@@ -20,7 +20,7 @@ class Status: NSObject{
     @objc var source:String?
     
     // 用户模型
-    //@objc  var user:User?
+    @objc  var user:User?
     @objc var pic_urls:[[String:String]]?
     
     /// 被转发的原微博信息字段
@@ -38,16 +38,16 @@ class Status: NSObject{
     
     override func setValue(_ value: Any?, forKey key: String) {
         //判断key 是否是user
-//        if key == "user" {
-//
-//            if let dict = value as? [String:AnyObject] {
-//                //print(dict)
-//                user = User(dict: dict)
-//                //print(user?.screen_name)
-//            }
-//            return
-//        }
-//
+        if key == "user" {
+
+            if let dict = value as? [String:AnyObject] {
+                //print(dict)
+                user = User(dict: dict)
+                //print(user?.screen_name)
+            }
+            return
+        }
+
 //        // 判断 key 是否等于 retweeted_status
 //        if key == "retweeted_status" {
 //            if let dict = value as? [String:AnyObject] {
@@ -64,7 +64,7 @@ class Status: NSObject{
     
     override var description: String {
         
-        let keys = ["id", "text", "created_at", "source", "pic_urls","retweeted_status"]
+        let keys = ["id", "text", "created_at", "source", "user", "pic_urls","retweeted_status"]
         return dictionaryWithValues(forKeys: keys).description
     }
     

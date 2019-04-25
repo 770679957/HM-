@@ -93,7 +93,7 @@ extension HomeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellNormalId, for: indexPath)
         //测试微博信息内容
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].user?.screen_name
         return cell
     }
     

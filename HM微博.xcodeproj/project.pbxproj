@@ -17,6 +17,7 @@
 		3B4D4D5B226C99990027C83E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D5A226C99990027C83E /* Common.swift */; };
 		3B512F482270A6B80029532F /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B512F472270A6B80029532F /* Status.swift */; };
 		3B512F4A2270BF040029532F /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B512F492270BF040029532F /* StatusListViewModel.swift */; };
+		3B56B4A4227145BF001ACF69 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56B4A3227145BF001ACF69 /* User.swift */; };
 		3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E7132268042C00B3B4FA /* AppDelegate.swift */; };
 		3B59E71B2268043200B3B4FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E71A2268043200B3B4FA /* Assets.xcassets */; };
 		3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E72F22680D5B00B3B4FA /* MainViewController.swift */; };
@@ -44,6 +45,7 @@
 		3B4D4D5A226C99990027C83E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		3B512F472270A6B80029532F /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		3B512F492270BF040029532F /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		3B56B4A3227145BF001ACF69 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B59E7102268042C00B3B4FA /* HM微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HM微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E7132268042C00B3B4FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B59E71A2268043200B3B4FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				3B13CE7E226B1BAF00448C81 /* UserAccount.swift */,
 				3B512F472270A6B80029532F /* Status.swift */,
+				3B56B4A3227145BF001ACF69 /* User.swift */,
 			);
 			path = "Model(模型)";
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
 				3B4D4D59226C89910027C83E /* UILabel+Extension.swift in Sources */,
 				3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */,
+				3B56B4A4227145BF001ACF69 /* User.swift in Sources */,
 				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,
 				3B512F482270A6B80029532F /* Status.swift in Sources */,
 				3B59E73422680D9B00B3B4FA /* DiscoverTableViewController.swift in Sources */,
