@@ -11,7 +11,7 @@ import Foundation
 class StatusListViewModel {
     //微博数据组
     //刷新
-    lazy var statusList = [Status]()
+    lazy var statusList = [StatusViewModel]()
     //加载网络数据
     func loadStatus(finished:@escaping (_ isSuccessed:Bool) ->()){
         NetworkTools.sharedTools.loadStatus{ (result,error) -> () in
@@ -32,10 +32,10 @@ class StatusListViewModel {
             }
             // print(array)
             //遍历数组
-            var dataList = [Status]()
+            var dataList = [StatusViewModel]()
             
             for dict in array {
-                dataList.append(Status(dict: dict))
+                dataList.append(StatusViewModel(status: Status(dict: dict)))
             }
             //拼接数据
             self.statusList = dataList + self.statusList

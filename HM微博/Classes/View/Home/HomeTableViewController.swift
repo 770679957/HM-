@@ -36,7 +36,9 @@ class HomeTableViewController: VisitorTableViewController {
     //准备表格
     private func prepareTableView() {
         //注册可重用cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: StatusCellNormalId)
+        tableView.register(StatusCell.self, forCellReuseIdentifier: StatusCellNormalId)
+        //测试行高
+        tableView.rowHeight = 200
         
     }
     
@@ -91,9 +93,9 @@ extension HomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellNormalId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellNormalId, for: indexPath) as! StatusCell
         //测试微博信息内容
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].user?.screen_name
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.user?.screen_name
         return cell
     }
     
