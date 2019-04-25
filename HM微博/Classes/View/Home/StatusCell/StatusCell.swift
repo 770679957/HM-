@@ -20,9 +20,17 @@ class StatusCell: UITableViewCell {
     private lazy var topView:StatusCellTopView = StatusCellTopView()
     
     //微博正文标签
-   lazy var contentLabel:UILabel = UILabel(title: "微博正文", fontSize: 15, color: UIColor.darkGray)
+   lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray)
     //底部视图
     private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
+    
+    //微博视图模型
+    var viewModel:StatusViewModel? {
+        didSet {
+            
+          topView.viewModel = viewModel
+        }
+    }
     
     // MARK: - 构造函数
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
