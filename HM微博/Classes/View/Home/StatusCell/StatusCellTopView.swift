@@ -49,7 +49,7 @@ class StatusCellTopView: UIView {
             //时间
             timeLabel.text="刚刚"
             //来源
-            sourceLabel.text="来自黑马博客"
+            sourceLabel.text="来自红梅博客"
         }        
     }
    
@@ -67,9 +67,21 @@ extension StatusCellTopView {
         addSubview(timeLabel)
         addSubview(sourceLabel)
         
+        let sepView=UIView()
+        sepView.backgroundColor=UIColor.lightGray
+        addSubview(sepView)
+        
+        sepView.snp.makeConstraints{
+            (make)->Void in
+            make.top.equalTo(self.snp.top)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.right)
+            make.height.equalTo(StatusCellMargin)
+        }
+        
         //自动布局
         iconView.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(self.snp.bottom).offset(StatusCellMargin)
+            make.top.equalTo(sepView.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(self.snp.left).offset(StatusCellMargin)
             make.width.equalTo(StatusCellIconWidth)
             make.height.equalTo(StatusCellIconWidth)

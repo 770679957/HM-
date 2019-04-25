@@ -20,7 +20,9 @@ class StatusCell: UITableViewCell {
     private lazy var topView:StatusCellTopView = StatusCellTopView()
     
     //微博正文标签
-   lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray)
+    private  lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray,screenInset:StatusCellMargin)
+    // 配图视图
+   // lazy var pictureView: StatusPictureView = StatusPictureView()
     //底部视图
     private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
     
@@ -28,7 +30,8 @@ class StatusCell: UITableViewCell {
     var viewModel:StatusViewModel? {
         didSet {
             
-          topView.viewModel = viewModel
+            topView.viewModel = viewModel
+            contentLabel.text = viewModel?.status.text
         }
     }
     
@@ -85,6 +88,9 @@ extension StatusCell {
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)
+            
+        //指定像下的约束
+            make.bottom.equalTo(contentView.snp_bottom)
         }
         
     }
