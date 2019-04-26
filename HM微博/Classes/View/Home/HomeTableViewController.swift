@@ -38,9 +38,9 @@ class HomeTableViewController: VisitorTableViewController {
         //注册可重用cell
         tableView.register(StatusCell.self, forCellReuseIdentifier: StatusCellNormalId)
         //测试行高
-        //tableView.rowHeight = 200
+        tableView.rowHeight = 400
         //自动计算行高
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 400
         tableView.rowHeight = UITableView.automaticDimension
         //取消分割线
         tableView.separatorStyle = .none

@@ -32,11 +32,16 @@ class StatusCell: UITableViewCell {
             
             topView.viewModel = viewModel
             contentLabel.text = viewModel?.status.text
-//            // 测试动态修改行高
-//            pictureView.snp.makeConstraints{ (make)->Void in
-//
-//                make.height.equalTo(Int(arc4random()) % 4 * 90)
-//            }
+            
+            //设置配图视图- 设置视图模型之后，配图视图才有能力计算大小
+            pictureView.viewModel=viewModel
+            pictureView.snp.updateConstraints{ (make) -> Void in
+                make.height.equalTo(pictureView.bounds.height)
+                
+                print(pictureView.bounds.width)
+                //直接设置宽度数值
+                make.width.equalTo(pictureView.bounds.width)
+            }
         }
     }
     
