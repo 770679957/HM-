@@ -10,6 +10,8 @@
 		3B13CE7F226B1BAF00448C81 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13CE7E226B1BAF00448C81 /* UserAccount.swift */; };
 		3B13CE81226B5D9800448C81 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13CE80226B5D9800448C81 /* UserAccountViewModel.swift */; };
 		3B44C3CA22729449006AEF43 /* StatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44C3C922729449006AEF43 /* StatusPictureView.swift */; };
+		3B44C3CC22732B9D006AEF43 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B44C3CB22732B9D006AEF43 /* SDWebImage.framework */; };
+		3B44C3CE22736121006AEF43 /* StatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44C3CD22736121006AEF43 /* StatusNormalCell.swift */; };
 		3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D4E226C188F0027C83E /* NewFeatureViewController.swift */; };
 		3B4D4D51226C5A7D0027C83E /* NewFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D50226C5A7D0027C83E /* NewFeatureCell.swift */; };
 		3B4D4D53226C73AA0027C83E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D52226C73AA0027C83E /* WelcomeViewController.swift */; };
@@ -43,6 +45,8 @@
 		3B13CE7E226B1BAF00448C81 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		3B13CE80226B5D9800448C81 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		3B44C3C922729449006AEF43 /* StatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPictureView.swift; sourceTree = "<group>"; };
+		3B44C3CB22732B9D006AEF43 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B44C3CD22736121006AEF43 /* StatusNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCell.swift; sourceTree = "<group>"; };
 		3B4D4D4E226C188F0027C83E /* NewFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
 		3B4D4D50226C5A7D0027C83E /* NewFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureCell.swift; sourceTree = "<group>"; };
 		3B4D4D52226C73AA0027C83E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B44C3CC22732B9D006AEF43 /* SDWebImage.framework in Frameworks */,
 				3B59E74E2269D0EF00B3B4FA /* Pods_HM微博.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +115,7 @@
 				3B56B4AA227151D3001ACF69 /* StatusCellTopView.swift */,
 				3B56B4AC227151F8001ACF69 /* StatusCellBottomView.swift */,
 				3B44C3C922729449006AEF43 /* StatusPictureView.swift */,
+				3B44C3CD22736121006AEF43 /* StatusNormalCell.swift */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 		AC49D7E43CBD5EFB9B03EBA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B44C3CB22732B9D006AEF43 /* SDWebImage.framework */,
 				3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */,
 				3B59E74B2269CAFC00B3B4FA /* AFNetworking.framework */,
 				3B59E7492269CAB200B3B4FA /* Pods_HM微博.framework */,
@@ -425,6 +432,7 @@
 				3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
+				3B44C3CE22736121006AEF43 /* StatusNormalCell.swift in Sources */,
 				3B4D4D59226C89910027C83E /* UILabel+Extension.swift in Sources */,
 				3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */,
 				3B56B4A4227145BF001ACF69 /* User.swift in Sources */,

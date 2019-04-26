@@ -20,7 +20,7 @@ class StatusCell: UITableViewCell {
     private lazy var topView:StatusCellTopView = StatusCellTopView()
     
     //微博正文标签
-    private  lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray,screenInset:StatusCellMargin)
+     lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray,screenInset:StatusCellMargin)
     // 配图视图
     lazy var pictureView: StatusPictureView = StatusPictureView()
     //底部视图
@@ -38,6 +38,7 @@ class StatusCell: UITableViewCell {
             pictureView.snp.updateConstraints{ (make) -> Void in
                 make.height.equalTo(pictureView.bounds.height)
                 
+                print("print(pictureView.bounds.width)")
                 print(pictureView.bounds.width)
                 //直接设置宽度数值
                 make.width.equalTo(pictureView.bounds.width)
@@ -64,8 +65,20 @@ class StatusCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+    }
+    
+    /// 根据指定的视图模型计算行高
+    /// - parameter vm: 视图模型
+    /// - returns: 返回视图模型对应的行高
+    func rowHeight(vm: StatusViewModel) -> CGFloat {
+        // 1. 记录视图模型 -> 会调用上面的 didSet 设置内容以及更新`约束`
+        viewModel = vm
         
+        // 2. 强制更新所有约束 -> 所有控件的frame都会被计算正确
+        contentView.layoutIfNeeded()
+        
+        // 3. 返回底部视图的最大高度
+        return bottomView.frame.maxY
     }
 
 }
@@ -93,14 +106,14 @@ extension StatusCell {
             
         }
         
-        //配图视图
-        pictureView.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentView.snp.left)
-            make.width.equalTo(300)
-            make.height.equalTo(90)
-            
-        }
+//        //配图视图
+//        pictureView.snp.makeConstraints{ (make)->Void in
+//            make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
+//            make.left.equalTo(contentView.snp.left)
+//            make.width.equalTo(300)
+//            make.height.equalTo(90)
+//
+//        }
         
         
         //底部试图
@@ -110,8 +123,8 @@ extension StatusCell {
             make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)
             
-        //指定像下的约束
-            make.bottom.equalTo(contentView.snp_bottom)
+//        //指定像下的约束
+//            make.bottom.equalTo(contentView.snp_bottom)
         }
         
     }

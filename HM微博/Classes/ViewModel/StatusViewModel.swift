@@ -47,8 +47,16 @@ class StatusViewModel {
         default: return nil
         }
     }
-    
-   
+    /// 行高
+    lazy var rowHeight:CGFloat = {
+        // print("计算缓存行高\(self.status.text)")
+        //let cell = StatusCell(style:.default,reuseIdentifier:StatusCellNormalId)
+        
+        let cell = StatusNormalCell(style:.default,reuseIdentifier:StatusCellNormalId)
+        
+        return cell.rowHeight(vm: self)
+       
+    }()
     
     //构造a函数
     init(status:Status) {

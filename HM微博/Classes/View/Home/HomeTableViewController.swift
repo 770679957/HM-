@@ -11,9 +11,9 @@ import SVProgressHUD
 
 
 /// 原创微博 Cell 的可重用表示符号
- private let StatusCellNormalId = "StatusCellNormalId"
+ let StatusCellNormalId = "StatusCellNormalId"
 /// 转发微博 Cell 的可重用标识符号
- private let StatusCellRetweetedId = "StatusCellRetweetedId"
+ let StatusCellRetweetedId = "StatusCellRetweetedId"
 
 class HomeTableViewController: VisitorTableViewController {
     //微博数据数组
@@ -36,7 +36,7 @@ class HomeTableViewController: VisitorTableViewController {
     //准备表格
     private func prepareTableView() {
         //注册可重用cell
-        tableView.register(StatusCell.self, forCellReuseIdentifier: StatusCellNormalId)
+        tableView.register(StatusNormalCell.self, forCellReuseIdentifier: StatusCellNormalId)
         //测试行高
         tableView.rowHeight = 400
         //自动计算行高
@@ -97,9 +97,15 @@ extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellNormalId, for: indexPath) as! StatusCell
+        //
         //测试微博信息内容
         cell.viewModel = listViewModel.statusList[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView:UITableView,heightForRowAt indexPath:IndexPath)->CGFloat {
+       
+        return listViewModel.statusList[indexPath.row].rowHeight
     }
     
 }
