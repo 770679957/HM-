@@ -21,6 +21,7 @@ class Status: NSObject{
     
     // 用户模型
     @objc  var user:User?
+    //缩略图配图数组
     @objc var pic_urls:[[String:String]]?
     
     /// 被转发的原微博信息字段
@@ -68,6 +69,10 @@ class Status: NSObject{
         return dictionaryWithValues(forKeys: keys).description
     }
     
-    
 }
 
+
+//public protocol CustomStringConvertible {
+//
+//    var description:String {get}
+//}

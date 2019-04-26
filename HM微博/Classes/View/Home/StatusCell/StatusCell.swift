@@ -22,7 +22,7 @@ class StatusCell: UITableViewCell {
     //微博正文标签
     private  lazy var contentLabel:UILabel = UILabel(title: "", fontSize: 15, color: UIColor.darkGray,screenInset:StatusCellMargin)
     // 配图视图
-   // lazy var pictureView: StatusPictureView = StatusPictureView()
+    lazy var pictureView: StatusPictureView = StatusPictureView()
     //底部视图
     private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
     
@@ -32,6 +32,11 @@ class StatusCell: UITableViewCell {
             
             topView.viewModel = viewModel
             contentLabel.text = viewModel?.status.text
+//            // 测试动态修改行高
+//            pictureView.snp.makeConstraints{ (make)->Void in
+//
+//                make.height.equalTo(Int(arc4random()) % 4 * 90)
+//            }
         }
     }
     
@@ -66,6 +71,7 @@ extension StatusCell {
         //添加控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLabel)
+        contentView.addSubview(pictureView)
         contentView.addSubview(bottomView)
         //顶部视图
         topView.snp.makeConstraints{ (make)->Void in
@@ -82,9 +88,19 @@ extension StatusCell {
             
         }
         
+        //配图视图
+        pictureView.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
+            make.left.equalTo(contentView.snp.left)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
+            
+        }
+        
+        
         //底部试图
         bottomView.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
+            make.top.equalTo(pictureView.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)

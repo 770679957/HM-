@@ -42,7 +42,8 @@ class HomeTableViewController: VisitorTableViewController {
         //自动计算行高
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
-        
+        //取消分割线
+        tableView.separatorStyle = .none
     }
     
     //加载数据
@@ -81,7 +82,6 @@ class HomeTableViewController: VisitorTableViewController {
                 SVProgressHUD.showInfo(withStatus: "加载数据错误，请稍后再试")
                 return
             }
-            print(self.listViewModel.statusList)
             //刷新数据
             self.tableView.reloadData()
         }

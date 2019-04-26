@@ -33,6 +33,8 @@ class StatusViewModel {
         }
         return nil
     }
+    //缩略图Url数组
+    var thumbnailUrls: [NSURL]?
     
     
     /// 用户认证图标
@@ -46,9 +48,27 @@ class StatusViewModel {
         }
     }
     
+   
     
     //构造a函数
     init(status:Status) {
         self.status = status
+        //根据模型，来生成缩略图的数组
+        if (status.pic_urls?.count)! > 0 {
+            //创建缩略图数组
+            thumbnailUrls = [NSURL]()
+            
+            // 遍历字典数组 - 数组如果是可选的，不允许遍历，原因：数组是通过下标来检索数据
+            for dict in status.pic_urls! {
+                let url = NSURL(string:dict["thumbnail_pic"]!)
+                thumbnailUrls?.append(url!)
+            }
+        }
+    }
+    
+    //描述信息
+    var description:String {
+        
+        return status.description + "配图数组 \(thumbnailUrls)"
     }
 }
