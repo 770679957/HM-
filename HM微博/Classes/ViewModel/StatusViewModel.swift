@@ -50,13 +50,28 @@ class StatusViewModel {
     /// 行高
     lazy var rowHeight:CGFloat = {
         // print("计算缓存行高\(self.status.text)")
-        //let cell = StatusCell(style:.default,reuseIdentifier:StatusCellNormalId)
-        
-        let cell = StatusRetweetedCell(style:.default,reuseIdentifier:StatusCellRetweetedId)
-        
+        //let cell = StatusRetweetedCell(style:.default,reuseIdentifier:StatusCellRetweetedId)
+        var cell:StatusCell
+        //实例化cell
+        if self.status.retweeted_status != nil{
+            cell = StatusRetweetedCell(style:.default,reuseIdentifier:StatusCellRetweetedId)
+        }else{
+            cell = StatusNormalCell(style:.default,reuseIdentifier:StatusCellNormalId)
+        }
+        //返回行高
         return cell.rowHeight(vm: self)
-       
     }()
+    var retweetedText: String? {
+        guard let s = status.retweeted_status else {
+            return nil
+        }
+        return "@" + (s.user?.screen_name ?? "") + ":" + (s.text ?? "")!
+    }
+    
+    /// 可重用标识符
+    var cellId: String {
+        return status.retweeted_status != nil ? StatusCellRetweetedId: StatusCellNormalId
+    }
     
     //构造a函数
     init(status:Status) {

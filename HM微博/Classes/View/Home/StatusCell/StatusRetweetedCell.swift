@@ -19,6 +19,23 @@ class StatusRetweetedCell: StatusCell {
     //转发微博标签
      lazy var retweetedLabel: UILabel = UILabel (title: "转发微博", fontSize: 14, color: UIColor.darkGray, screenInset: StatusCellMargin)
     
+    /// 微博视图模型
+    override var viewModel: StatusViewModel? {
+        didSet {
+            // 转发微博的文字
+            //            let text = viewModel?.retweetedText ?? ""
+            //            retweetedLabel.attributedText = EmoticonManager.sharedManager.emoticonText(text, font: retweetedLabel.font)
+            retweetedLabel.text = viewModel?.retweetedText
+            
+            pictureView.snp_updateConstraints { (make) -> Void in
+                
+                // 根据配图数量，决定配图视图的顶部间距
+                let offset = viewModel?.thumbnailUrls?.count == 0 ? 0 : StatusCellMargin
+                make.top.equalTo(retweetedLabel.snp_bottom).offset(offset)
+            }
+        }
+    }
+    
     override func setupUI() {
         super.setupUI()
         contentView.insertSubview(backButton,belowSubview:pictureView)

@@ -35,8 +35,11 @@ class HomeTableViewController: VisitorTableViewController {
     }
     //准备表格
     private func prepareTableView() {
-        //注册可重用cell
-        tableView.register(StatusRetweetedCell.self, forCellReuseIdentifier: StatusCellRetweetedId)
+        // 注册可重用 cell
+        tableView.register(StatusRetweetedCell.self,forCellReuseIdentifier:StatusCellRetweetedId)
+        // 注册可重用 cell
+        tableView.register(StatusNormalCell.self, forCellReuseIdentifier:StatusCellNormalId)
+
         //测试行高
         tableView.rowHeight = 400
         //自动计算行高
@@ -96,10 +99,14 @@ extension HomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellRetweetedId, for: indexPath) as! StatusCell
-        //
-        //测试微博信息内容
-        cell.viewModel = listViewModel.statusList[indexPath.row]
+        //let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellRetweetedId, for: indexPath) as! StatusCell
+        //获取视图模型
+        let vm = listViewModel.statusList[indexPath.row]
+        //获取可重用cell会调用行高方法
+        let cell = tableView.dequeueReusableCell(withIdentifier: vm.cellId, for: indexPath) as! StatusCell
+        //设置视图模型
+        cell.viewModel = vm
+        
         return cell
     }
     
