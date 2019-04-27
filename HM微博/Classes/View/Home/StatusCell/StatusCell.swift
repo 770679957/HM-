@@ -24,7 +24,7 @@ class StatusCell: UITableViewCell {
     // 配图视图
     lazy var pictureView: StatusPictureView = StatusPictureView()
     //底部视图
-    private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
+    lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
     
     //微博视图模型
     var viewModel:StatusViewModel? {

@@ -40,7 +40,7 @@ class Status: NSObject{
     override func setValue(_ value: Any?, forKey key: String) {
         //判断key 是否是user
         if key == "user" {
-
+            
             if let dict = value as? [String:AnyObject] {
                 //print(dict)
                 user = User(dict: dict)
@@ -48,21 +48,20 @@ class Status: NSObject{
             }
             return
         }
-
-//        // 判断 key 是否等于 retweeted_status
-//        if key == "retweeted_status" {
-//            if let dict = value as? [String:AnyObject] {
-//
-//                retweeted_status = Status(dict: dict)
-//            }
-//            return
-//        }
+        
+        // 判断 key 是否等于 retweeted_status
+        if key == "retweeted_status" {
+            if let dict = value as? [String:AnyObject] {
+                
+                retweeted_status = Status(dict: dict)
+            }
+            return
+        }
         
         
         super.setValue(value, forKey: key)
         
     }
-    
     override var description: String {
         
         let keys = ["id", "text", "created_at", "source", "user", "pic_urls","retweeted_status"]
