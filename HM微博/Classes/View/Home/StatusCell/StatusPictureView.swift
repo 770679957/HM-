@@ -122,10 +122,10 @@ extension StatusPictureView {
         let row = CGFloat((count - 1) / Int(rowCount) + 1)
         let h = row * itemWidth + (row - 1) * StatusPictureViewItemMargin + 1
         let w = rowCount * itemWidth + (rowCount - 1) * StatusPictureViewItemMargin  + 1
-        print("row h w")
-        print(row)
-        print(h)
-        print(w)
+       // print("row h w")
+//        print(row)
+//        print(h)
+//        print(w)
         return CGSize(width: w, height: 300)
         
         

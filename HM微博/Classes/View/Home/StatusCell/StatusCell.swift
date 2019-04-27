@@ -38,8 +38,7 @@ class StatusCell: UITableViewCell {
             pictureView.snp.updateConstraints{ (make) -> Void in
                 make.height.equalTo(pictureView.bounds.height)
                 
-                print("print(pictureView.bounds.width)")
-                print(pictureView.bounds.width)
+                //print(pictureView.bounds.width)
                 //直接设置宽度数值
                 make.width.equalTo(pictureView.bounds.width)
             }
