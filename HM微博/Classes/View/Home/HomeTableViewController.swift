@@ -47,10 +47,19 @@ class HomeTableViewController: VisitorTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         //取消分割线
         tableView.separatorStyle = .none
+        //下拉刷新控件默认没有
+        refreshControl = WBRefreshControl()
+        //添加监听方法
+        // 添加监听方法
+        refreshControl?.addTarget(self, action: #selector(HomeTableViewController.loadData), for: UIControl.Event.valueChanged)
+        
+        
+        
+        
     }
     
     //加载数据
-    private func loadData() {
+    @objc private func loadData() {
 //        NetworkTools.sharedTools.loadStatus { (result,error) -> () in
 //            if error != nil {
 //                print("出错了")
