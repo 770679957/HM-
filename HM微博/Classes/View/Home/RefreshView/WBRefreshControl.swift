@@ -14,6 +14,20 @@ class WBRefreshControl: UIRefreshControl {
     
     /// 下拉刷新控件偏移量
     private let WBRefreshControlOffset: CGFloat = -60
+    
+    //重写系统方法
+    override func endRefreshing() {
+        super.endRefreshing()
+        //停止动画
+        refreshView.stopAnimation()
+    }
+    
+    
+    //主动触发开始刷新控件- 不会触发监听方法
+    override func beginRefreshing() {
+        super.beginRefreshing()
+        refreshView.startAnimation()
+    }
   
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if frame.origin.y > 0 {
@@ -111,7 +125,7 @@ class WBRefreshView: UIView {
     //播放加载动画
     public func startAnimation() {
         
-        //tipView.isHidden = true
+        TipView.isHidden = true
         //判断动画是否已经添加
         let key = "transform.rotation"
         if loadingIconView.layer.animation(forKey: key) != nil {
@@ -129,7 +143,7 @@ class WBRefreshView: UIView {
     //停止加载动画
     public func stopAnimation() {
         
-       // tipView.isHidden = false
+        TipView.isHidden = false
         loadingIconView.layer.removeAllAnimations()
         
     }

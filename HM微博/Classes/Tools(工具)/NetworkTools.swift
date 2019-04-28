@@ -127,21 +127,30 @@ extension NetworkTools {
 //微博数据相关方法
 extension NetworkTools {
     //加载微博数据
-    func loadStatus (finished:@escaping HMRequestCallBack){
-        //获取token字典
-        guard let params = tokenDict else {
-            //如果字典为空，通知调用方，token无效
-            finished(nil,NSError (domain: "cn.itcast.error", code: -1001, userInfo: ["message":"token为空"]))
+    func loadStatus(since_id:Int,max_id:Int,finished:@escaping HMRequestCallBack) {
+        // 1. 创建参数字典
+        var params = [String:AnyObject]()
+        
+        // 判断是否下拉
+        guard let p = tokenDict else
+        {
+            finished(nil,NSError(domain:"cn.itcast.error",code:-1001,userInfo:["message":"token is nil"]))
             return
-            
         }
-        //准备网络参数
-        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        //发起网络请求
+        
+        params["access_token"] = p["access_token"]
+        
+        if since_id > 0 {
+            params["since_id"] = since_id as AnyObject?
+        }else if max_id > 0 {
+            params["max_id"] = max_id - 1 as AnyObject?
+        }
+        // 2. 准备网络参数
+        let urlString="https://api.weibo.com/2/statuses/home_timeline.json"
+        // 3. 发起网络请求
         request(method: .GET, URLString: urlString, parameters: params, finished: finished)
-        
-        
     }
+    
     
 }
 

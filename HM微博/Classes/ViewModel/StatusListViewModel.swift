@@ -13,14 +13,21 @@ class StatusListViewModel {
     //微博数据组
     //刷新
     lazy var statusList = [StatusViewModel]()
+    
+    //下拉刷新数据
+    var pulldownCount: Int?
     //加载网络数据
-    func loadStatus(finished:@escaping (_ isSuccessed:Bool) ->()){
-        NetworkTools.sharedTools.loadStatus{ (result,error) -> () in
+    func loadStatus(isPulled:Bool,finished:@escaping (_ isSuccessed:Bool) ->()){
+        //下拉刷新 —— 数组中第一条微博的id
+        let since_id = isPulled ? 0 : (statusList.first?.status.id ?? 0)
+        
+        let max_id = isPulled ? (statusList.last?.status.id ?? 0) : 0
+        
+        NetworkTools.sharedTools.loadStatus(since_id: since_id, max_id: max_id) { (result, error) -> () in
             if error != nil {
                 print("出错了")
                 finished(false)
                 return
-                
             }
             //print(result)
             //判断result的数据结构是否正确
@@ -38,9 +45,14 @@ class StatusListViewModel {
             for dict in array {
                 dataList.append(StatusViewModel(status: Status(dict: dict)))
             }
-            //拼接数据
-            self.statusList = dataList + self.statusList
-            //完成回调
+//            /// 记录下拉刷新的数据
+           self.pulldownCount = (since_id > 0) ? dataList.count : nil
+            //拼接数据 判断是否是上拉刷新
+            if max_id > 0 {
+                self.statusList += dataList
+            }else {
+                self.statusList = dataList + self.statusList
+            }
             
             //缓存图片
             self.cacheSingleImage(dataList: dataList, finished: finished)

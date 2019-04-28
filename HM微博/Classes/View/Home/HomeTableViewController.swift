@@ -53,52 +53,72 @@ class HomeTableViewController: VisitorTableViewController {
         // 添加监听方法
         refreshControl?.addTarget(self, action: #selector(HomeTableViewController.loadData), for: UIControl.Event.valueChanged)
         
+        //上拉刷新视图
+        tableView.tableFooterView = pullupView
+    }
+    
+    // MARK: - 懒加载控件
+    /// 上拉刷新提示视图
+    private lazy var pullupView:UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+        indicator.color = UIColor.lightGray
+        return indicator
+    }()
+    
+    /// 下拉刷新提示标签
+    private lazy var pulldownTipLabel: UILabel = {
         
+        let label = UILabel(title: "", fontSize: 18, color: UIColor.white)
+        label.backgroundColor = UIColor.orange
         
+        // 添加到 navigationBar
+        self.navigationController?.navigationBar.insertSubview(label, at: 0)
         
+        return label
+    }()
+    public func showPulldownTip(){
+        guard let count = listViewModel.pulldownCount else{
+            return
+        }
+       pulldownTipLabel.text = (count == 0) ? "没有新微博" : "刷新到\(count)条微博"
+        let height:CGFloat = 44
+        let rect = CGRect(x:0,y:0,width:view.bounds.width,height:height)
+        pulldownTipLabel.frame = rect.offsetBy(dx: 0, dy: -2 * height)
+        
+       UIView.animate(withDuration: 1.0, animations: { () -> Void in
+            self.pulldownTipLabel.frame = rect.offsetBy(dx: 0, dy: height)
+        }) { (_) -> Void in
+            UIView.animate(withDuration:1.0){
+               self.pulldownTipLabel.frame = rect.offsetBy(dx: 0, dy: -2 * height)
+           }
+       }
     }
     
     //加载数据
     @objc private func loadData() {
-//        NetworkTools.sharedTools.loadStatus { (result,error) -> () in
-//            if error != nil {
-//                print("出错了")
-//                return
-//
-//            }
-//            //print(result)
-//            //判断result的数据结构是否正确
-//            let result1 = result as? [String:AnyObject]
-//            guard let array = result1?["statuses"] as? [[String:AnyObject]]
-//                else {
-//                    print("数据格式错误")
-//                    return
-//            }
-//           // print(array)
-//            //遍历数组
-//            var dataList = [Status]()
-//
-//            for dict in array {
-//                dataList.append(Status(dict: dict))
-//            }
-//            //测试
-//            print(dataList)
-//            self.dataList = dataList
-//            //刷新数据
-//            self.tableView.reloadData()
-//        }
+        // 开始刷新
+        refreshControl?.beginRefreshing()
         
-        listViewModel.loadStatus{ (isSuccessed) -> () in
+        listViewModel.loadStatus(isPulled: pullupView.isAnimating) {(isSuccessed) -> () in
+            
+            // 关闭刷新控件
+            self.refreshControl?.endRefreshing()
+            //关闭上拉刷新
+            self.pullupView.stopAnimating()
+            
             if !isSuccessed {
-                
                 SVProgressHUD.showInfo(withStatus: "加载数据错误，请稍后再试")
                 return
             }
+            //显示下拉刷新提示
+            self.showPulldownTip()
             //刷新数据
             self.tableView.reloadData()
+            
         }
-        
     }
+    
+    
 }
 
 //数据源方法
@@ -115,6 +135,16 @@ extension HomeTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: vm.cellId, for: indexPath) as! StatusCell
         //设置视图模型
         cell.viewModel = vm
+        
+        // 判断是否是最后一条微博
+        if indexPath.row == listViewModel.statusList.count - 1
+            && !pullupView.isAnimating {
+            
+            //开始动画
+            pullupView.startAnimating()
+            //上拉刷新数据
+            loadData()
+        }
         
         return cell
     }
