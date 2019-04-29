@@ -19,6 +19,11 @@ class ComposeViewController: UIViewController {
         let tv = UITextView()
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.textColor = UIColor.darkGray
+        //始终允许垂直滚动
+        tv.alwaysBounceVertical = true
+        //拖拽关闭键盘
+        tv.keyboardDismissMode = UIScrollView.KeyboardDismissMode.onDrag
+        
         return tv
     }()
     //占位标签
@@ -27,17 +32,27 @@ class ComposeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        //添加键盘通知
+        NotificationCenter.default.addObserver(self, selector: #selector(ComposeViewController.keyboardChanged), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     //视图生命周期
     override func loadView() {
         view = UIView()
         setupUI()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //激活键盘
+        textView.becomeFirstResponder()
+    }
     //关闭
     @objc private func close() {
-        
+        //关闭键盘
+        textView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     @objc private func sendStatus() {
@@ -48,6 +63,23 @@ class ComposeViewController: UIViewController {
     @objc private func selectEmoticon() {
         
         print("选择表情")
+    }
+    //键盘变化处理
+    @objc private func keyboardChanged(n:NSNotification) {
+        // 1. 获取目标的rect - 字典中的`结构体`是 NSValue
+        let rect = (n.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        // 获取目标的动画时长 - 字典中的数值是 NSNumber
+        let duretion = (n.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let offset = -UIScreen.main.bounds.height + rect.origin.y
+        //2.更新约束
+        toolbar.snp_updateConstraints { (make) -> Void in
+            make.bottom.equalTo(view.snp_bottom).offset(offset)
+        }
+        //动画
+        UIView.animate(withDuration: duretion) { () -> Void in
+            
+            self.view.layoutIfNeeded()
+        }
     }
     
     
