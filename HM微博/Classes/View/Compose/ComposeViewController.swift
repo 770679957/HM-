@@ -14,6 +14,16 @@ class ComposeViewController: UIViewController {
     // MARK: - 懒加载控件
     /// 工具条
     private lazy var toolbar = UIToolbar()
+    //文本视图
+    private lazy var textView:UITextView = {
+        let tv = UITextView()
+        tv.font = UIFont.systemFont(ofSize: 18)
+        tv.textColor = UIColor.darkGray
+        return tv
+    }()
+    //占位标签
+    private lazy var placeHolderLabel: UILabel = UILabel(title: "",fontSize:18,color:UIColor.lightGray)
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +56,15 @@ class ComposeViewController: UIViewController {
 
 //设置界面
 private extension ComposeViewController {
+    
+    
     func setupUI() {
         //设置背景颜色
         view.backgroundColor = UIColor.white
         //设置控件
         prepareNavigationBar()
         prepareToolbar()
+        prepareTextView()
     }
     //设置导航栏
     private func prepareNavigationBar() {
@@ -110,19 +123,18 @@ private extension ComposeViewController {
         var items = [UIBarButtonItem]()
         //遍历itemSettings 数组
         for dict in itemSettings {
-            //根据子控件的信息创建UIButton对象
-//            let btn = UIButton(type: .custom)
-//            let imageName = dict["imageName"]!
-            let button = UIButton(imageName: dict["imageName"]!, backImageName: nil)
-            //判断actionName是否存在，如果存在，则为子控件添加事件处理方法
-               if let actionName = dict["actionName"] {
-                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
-            }
-            
-            //将使用UIbutton创建UIBarButtonItem
-            let item = UIBarButtonItem(customView: button)
-            //添加子控件
-            items.append(item)
+//            //根据子控件的信息创建UIButton对象
+//            let button = UIButton(imageName: dict["imageName"]!, backImageName: nil)
+//            //判断actionName是否存在，如果存在，则为子控件添加事件处理方法
+//               if let actionName = dict["actionName"] {
+//                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+//            }
+//            
+//            //将使用UIbutton创建UIBarButtonItem
+//            let item = UIBarButtonItem(customView: button)
+//            //添加子控件
+//            items.append(item)
+            items.append(UIBarButtonItem(imageName: dict["imageName"]!, target: self, actionName: dict["actionName"]))
             //添加可变长度控件，用于填充子控件之间的空隙
             items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         }
@@ -133,4 +145,26 @@ private extension ComposeViewController {
         
         
     }
+    
+    //准备文本视图
+    private func prepareTextView() {
+        
+        view.addSubview(textView)
+        // 添加占位标签
+        textView.addSubview(placeHolderLabel)
+        
+        textView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.left.equalTo(view.snp_left)
+            make.right.equalTo(view.snp_right)
+            make.bottom.equalTo(toolbar.snp_top)
+        }
+        
+        placeHolderLabel.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(textView.snp_top).offset(8)
+            make.left.equalTo(textView.snp_left).offset(5)
+        }
+        textView.text = "分享新鲜事..."
+    }
+    
 }
