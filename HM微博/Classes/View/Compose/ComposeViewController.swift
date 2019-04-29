@@ -11,11 +11,16 @@ import SVProgressHUD
 import SnapKit
 
 class ComposeViewController: UIViewController {
+    //表情键盘视图
+    private lazy var emotionView:EmoticonView = EmoticonView { [weak self] (Emoticon) ->() in
+        self?.textView.insertEmoticon(em: Emoticon)
+    }
     // MARK: - 懒加载控件
     /// 工具条
     private lazy var toolbar = UIToolbar()
     //文本视图
     private lazy var textView:UITextView = {
+        
         let tv = UITextView()
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.textColor = UIColor.darkGray
@@ -23,6 +28,8 @@ class ComposeViewController: UIViewController {
         tv.alwaysBounceVertical = true
         //拖拽关闭键盘
         tv.keyboardDismissMode = UIScrollView.KeyboardDismissMode.onDrag
+        //设置文本视图的代理
+        tv.delegate = self
         
         return tv
     }()
@@ -61,8 +68,17 @@ class ComposeViewController: UIViewController {
     
     /// 选择表情
     @objc private func selectEmoticon() {
+        //如果使用的是系统键盘，则为nil
+        print("选择表情 \(textView.inputView)")
+        //推掉键盘
+        textView.resignFirstResponder()
+        //设置键盘
+        textView.inputView = textView.inputView == nil ? emotionView :nil
+        //重新激活键盘
+        textView.becomeFirstResponder()
         
-        print("选择表情")
+        
+        
     }
     //键盘变化处理
     @objc private func keyboardChanged(n:NSNotification) {
@@ -75,15 +91,32 @@ class ComposeViewController: UIViewController {
         toolbar.snp_updateConstraints { (make) -> Void in
             make.bottom.equalTo(view.snp_bottom).offset(offset)
         }
-        //动画
+        
+        
+        //动画曲线数值
+        let curve = (n.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! NSNumber).intValue
         UIView.animate(withDuration: duretion) { () -> Void in
+            // 设置动画曲线
+            /**
+             曲线值 = 7
+             － 如果之前的动画没有完成，又启动了其他的动画，让动画的图层直接运动到后续动画的目标位置
+             － 一旦设置了 `7`，动画时长无效，动画时长统一变成 0.5s
+             */
             
+            UIView.setAnimationCurve(UIView.AnimationCurve(rawValue: curve)!)
             self.view.layoutIfNeeded()
         }
     }
-    
-    
 
+}
+
+//// MARK: - UITextViewDelegate
+extension ComposeViewController:UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        navigationItem.rightBarButtonItem?.isEnabled = textView.hasText
+        placeHolderLabel.isHidden = textView.hasText
+    }
+    
 }
 
 //设置界面
@@ -103,6 +136,8 @@ private extension ComposeViewController {
         //左右按钮
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ComposeViewController.close))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .plain, target: self, action: #selector(ComposeViewController.sendStatus))
+        //禁用发布微博按钮
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         // 2. 标题视图
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 36))
@@ -196,7 +231,7 @@ private extension ComposeViewController {
             make.top.equalTo(textView.snp_top).offset(8)
             make.left.equalTo(textView.snp_left).offset(5)
         }
-        textView.text = "分享新鲜事..."
+       // textView.text = "分享新鲜事..."
     }
     
 }
