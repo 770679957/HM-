@@ -24,7 +24,7 @@ extension UILabel {
             textAlignment = .left
         }
     
-        
+        sizeToFit()
     }
     
 }

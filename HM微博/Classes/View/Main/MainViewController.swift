@@ -12,14 +12,14 @@ class MainViewController: UITabBarController {
     
     //蓝加载控件
     private lazy var composedButton: UIButton = UIButton(imageName: "tabbar_compose_icon_add", backImageName: "babbat_compose_button")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addChildViewControllers()
         setupComposedButton()
         
         NetworkTools.sharedTools.request(method: HMRequestMethod.POST, URLString: "http://httpbin.org/post", parameters: ["name" : "zhangsan" as AnyObject,"age" : 18 as AnyObject]){(result,error)->() in
-           // print("\(result)")
+           
             
         }
         
@@ -79,7 +79,18 @@ extension MainViewController{
     }
     //点击撰写按钮
     @objc func clickComposedButton() {
-        print("点我")
+        //判断用户是否登录
+        var vc:UIViewController
+        if UserAccountViewModel.sharedUserAccount.userLogon {
+            vc = ComposeViewController()
+        } else {
+            vc = OAuthViewController()
+            
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
+        
     }
     
     

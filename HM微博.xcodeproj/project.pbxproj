@@ -25,6 +25,7 @@
 		3B56B4A822715078001ACF69 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56B4A722715078001ACF69 /* StatusCell.swift */; };
 		3B56B4AB227151D3001ACF69 /* StatusCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56B4AA227151D3001ACF69 /* StatusCellTopView.swift */; };
 		3B56B4AD227151F8001ACF69 /* StatusCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56B4AC227151F8001ACF69 /* StatusCellBottomView.swift */; };
+		3B57DF9922767CFA009A1677 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DF9822767CFA009A1677 /* ComposeViewController.swift */; };
 		3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E7132268042C00B3B4FA /* AppDelegate.swift */; };
 		3B59E71B2268043200B3B4FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E71A2268043200B3B4FA /* Assets.xcassets */; };
 		3B59E73022680D5B00B3B4FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E72F22680D5B00B3B4FA /* MainViewController.swift */; };
@@ -63,6 +64,7 @@
 		3B56B4A722715078001ACF69 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		3B56B4AA227151D3001ACF69 /* StatusCellTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellTopView.swift; sourceTree = "<group>"; };
 		3B56B4AC227151F8001ACF69 /* StatusCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellBottomView.swift; sourceTree = "<group>"; };
+		3B57DF9822767CFA009A1677 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		3B59E7102268042C00B3B4FA /* HM微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HM微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E7132268042C00B3B4FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B59E71A2268043200B3B4FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 				3B672C7C2273F1A2003564B9 /* StatusRetweetedCell.swift */,
 			);
 			path = StatusCell;
+			sourceTree = "<group>";
+		};
+		3B57DF9722767C7E009A1677 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				3B57DF9822767CFA009A1677 /* ComposeViewController.swift */,
+			);
+			path = Compose;
 			sourceTree = "<group>";
 		};
 		3B59E7072268042C00B3B4FA = {
@@ -191,6 +201,7 @@
 		3B59E72822680CAD00B3B4FA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3B57DF9722767C7E009A1677 /* Compose */,
 				3B696A51226ADBF00002AEFF /* OAuth */,
 				3B59E72922680CAD00B3B4FA /* Discover */,
 				3B59E72A22680CAD00B3B4FA /* Home */,
@@ -444,6 +455,7 @@
 				3B4D4D53226C73AA0027C83E /* WelcomeViewController.swift in Sources */,
 				3B56B4AB227151D3001ACF69 /* StatusCellTopView.swift in Sources */,
 				3B4D4D51226C5A7D0027C83E /* NewFeatureCell.swift in Sources */,
+				3B57DF9922767CFA009A1677 /* ComposeViewController.swift in Sources */,
 				3B672C822274A1C3003564B9 /* WBRefreshControl.swift in Sources */,
 				3B59E73822680DC700B3B4FA /* ProfileTableViewController.swift in Sources */,
 				3B44C3CA22729449006AEF43 /* StatusPictureView.swift in Sources */,
