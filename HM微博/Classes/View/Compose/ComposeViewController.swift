@@ -63,7 +63,22 @@ class ComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @objc private func sendStatus() {
-        print("发布微博")
+        //获取文本内容
+        //参照： https://www.jianshu.com/p/d97d5ddcf7b5
+        let text = textView.emoticonText + "http://www.mob.com/downloads/"
+        //发布微博
+        NetworkTools.sharedTools.sendStatus(status: text) { (result,error) -> () in
+            if error != nil {
+                print("出错了")
+                SVProgressHUD.showInfo(withStatus: "您的网络不给力")
+                return
+            }
+            
+            //关闭控制器
+            self.close()
+            
+        }
+        
     }
     
     /// 选择表情

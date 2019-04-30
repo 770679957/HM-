@@ -70,6 +70,52 @@ extension NetworkTools {
             post(URLString, parameters: parameters, progress: nil, success: success,failure:failure)
         }
     }
+    /// 使用 token 进行网络请求
+    ///
+    /// - parameter method:     GET / POST
+    /// - parameter URLString:  URLString
+    /// - parameter parameters: 参数字典
+    /// - parameter finished:   完成回调
+    private func tokenRequest(method: HMRequestMethod, URLString: String, parameters: [String: AnyObject]?, finished: @escaping HMRequestCallBack) {
+        //设置token参数，将token添加到parameters字典中
+        //判断token 是否有效
+        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+            //token无效
+            //如果字典为空，通知调用方，token无效
+            finished(nil,NSError(domain: "cn.itcast.error", code: -1001, userInfo: ["message": "token 为空"]))
+            return
+        }
+        //设置parameters字典
+        //将方法参数赋值给局部变量
+        var parameters = parameters
+        //判断参数字典是否有值
+        if parameters == nil {
+            parameters = [String:AnyObject]()
+        }
+        parameters!["access_token"] = token as AnyObject
+        //发起网络请求
+        request(method: method, URLString: URLString, parameters: parameters, finished: finished)
+    }
+    
+}
+/// 发布微博
+///
+/// - parameter status:   微博文本
+/// - parameter image:    微博配图
+/// - parameter finished: 完成回调
+extension NetworkTools {
+    
+    func sendStatus(status:String,finished:@escaping HMRequestCallBack) {
+        //创建参数字典
+        var params = [String:AnyObject]()
+        //设置参数
+        params["status"] = status as AnyObject
+       // params["status"] = "测试，测试，http://www.mob.com/downloads/" as AnyObject
+        let urlString = "https://api.weibo.com/2/statuses/share.json"
+        //发起f网络请求
+        tokenRequest(method: .POST, URLString: urlString, parameters: params, finished: finished)
+    }
+    
 }
 
 //// MARK: - OAuth 相关方法
@@ -150,7 +196,5 @@ extension NetworkTools {
         // 3. 发起网络请求
         request(method: .GET, URLString: urlString, parameters: params, finished: finished)
     }
-    
-    
 }
 
