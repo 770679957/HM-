@@ -67,7 +67,8 @@ class ComposeViewController: UIViewController {
         //参照： https://www.jianshu.com/p/d97d5ddcf7b5
         let text = textView.emoticonText + "http://www.mob.com/downloads/"
         //发布微博
-        NetworkTools.sharedTools.sendStatus(status: text) { (result,error) -> () in
+        let image = UIImage(named: "123")
+        NetworkTools.sharedTools.sendStatus(status: text, image: image) { (result,error) -> () in
             if error != nil {
                 print("出错了")
                 SVProgressHUD.showInfo(withStatus: "您的网络不给力")

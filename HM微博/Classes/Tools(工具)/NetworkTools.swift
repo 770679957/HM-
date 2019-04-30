@@ -97,6 +97,39 @@ extension NetworkTools {
         request(method: method, URLString: URLString, parameters: parameters, finished: finished)
     }
     
+    //上传文件
+    private func upload(URLString:String,data:NSData,name:String,parameters:[String:AnyObject]?,finished:@escaping HMRequestCallBack) {
+        //设置token参数，将token添加到parameters 字典中
+        //判断token是否有效
+        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+            //token无效
+            //如果字典为空，通知调用方，token无效
+            finished(nil,NSError(domain: "cn.itcast.error", code: -1001, userInfo: ["message": "token 为空"]))
+            return
+        }
+        //设置parameters字典
+        //将方法参数赋值给局部变量
+        var parameters = parameters
+        //判断参数字典是否有值
+        if parameters == nil {
+            parameters = [String:AnyObject]()
+        }
+         parameters!["access_token"] = token as AnyObject
+  
+        post(URLString, parameters: parameters, constructingBodyWith: {(formData) -> Void in
+            
+            formData.appendPart(withFileData: data as Data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+        }, success: { (_, result) -> Void in
+            finished(result, nil)
+        }) { (_, error) -> Void in
+            print(error)
+            finished(nil, error)
+        }
+        
+    }
+    
+    
+    
 }
 /// 发布微博
 ///
@@ -105,16 +138,27 @@ extension NetworkTools {
 /// - parameter finished: 完成回调
 extension NetworkTools {
     
-    func sendStatus(status:String,finished:@escaping HMRequestCallBack) {
+    func sendStatus(status:String,image:UIImage?,finished:@escaping HMRequestCallBack) {
         //创建参数字典
         var params = [String:AnyObject]()
-        //设置参数
-        params["status"] = status as AnyObject
-       // params["status"] = "测试，测试，http://www.mob.com/downloads/" as AnyObject
-        let urlString = "https://api.weibo.com/2/statuses/share.json"
-        //发起f网络请求
-        tokenRequest(method: .POST, URLString: urlString, parameters: params, finished: finished)
+         params["status"] = status as AnyObject        //设置参数
+        //判断是否上传图片
+        if image == nil {
+           
+            //params["status"] = "测试，测试，http://www.mob.com/downloads/" as AnyObject
+            let urlString = "https://api.weibo.com/2/statuses/share.json"
+            //发起f网络请求
+            tokenRequest(method: .POST, URLString: urlString, parameters: params, finished: finished)
+        }else {
+            let urlString = "https://api.weibo.com/2/statuses/share.json"
+            let data = image!.pngData()
+            
+            upload(URLString: urlString, data: data! as NSData, name: "pic", parameters: params, finished: finished)
+            
+        }
+       
     }
+
     
 }
 
