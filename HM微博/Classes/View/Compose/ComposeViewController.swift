@@ -11,6 +11,9 @@ import SVProgressHUD
 import SnapKit
 
 class ComposeViewController: UIViewController {
+    //照片选择控制器
+    private lazy var picturePickerController = PicturePickerController()
+    
     //表情键盘视图
     private lazy var emotionView:EmoticonView = EmoticonView { [weak self] (Emoticon) ->() in
         self?.textView.insertEmoticon(em: Emoticon)
@@ -54,7 +57,10 @@ class ComposeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //激活键盘
-        textView.becomeFirstResponder()
+        if picturePickerController.view.frame.height == 0 {
+            textView.becomeFirstResponder()
+            
+        }
     }
     //关闭
     @objc private func close() {
@@ -78,6 +84,28 @@ class ComposeViewController: UIViewController {
             //关闭控制器
             self.close()
             
+        }
+        
+    }
+    
+    /// 选择照片
+    @objc private func selectPicture() {
+        //推掉键盘
+        textView.resignFirstResponder()
+        //// 0. 判断如果已经更新了约束，不再执行后续代码
+        if picturePickerController.view.frame.height > 0 {
+            return
+        }
+        // // 1. 修改照片选择控制器视图的约束
+        picturePickerController.view.snp_updateConstraints { (make) -> Void in
+            make.height.equalTo(view.bounds.height * 0.6)
+        }
+        // 2. 修改文本视图的约束 - 重建约束，会将之前`textView`的所有的约束删除
+        textView.snp_remakeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp_topLayoutGuideBottom)
+            make.left.equalTo(view.snp_left)
+            make.right.equalTo(view.snp_right)
+            make.bottom.equalTo(picturePickerController.view.snp_top)
         }
         
     }
@@ -146,7 +174,35 @@ private extension ComposeViewController {
         prepareNavigationBar()
         prepareToolbar()
         prepareTextView()
+        preparePicturePicker()
     }
+    //准备照片选择控制器
+    private func preparePicturePicker() {
+        // 0. 添加子控制器
+        addChild(picturePickerController)
+        
+        //添加视图
+        view.addSubview(picturePickerController.view)
+        
+        // 1. 添加视图
+        view.insertSubview(picturePickerController.view, belowSubview: toolbar)
+        
+        // 2. 自动布局
+        picturePickerController.view.snp_makeConstraints { (make) -> Void in
+            make.bottom.equalTo(view.snp_bottom)
+            make.left.equalTo(view.snp_left)
+            make.right.equalTo(view.snp_right)
+            make.height.equalTo(0)
+        }
+        
+        //动画更新约束
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    
     //设置导航栏
     private func prepareNavigationBar() {
         //左右按钮
