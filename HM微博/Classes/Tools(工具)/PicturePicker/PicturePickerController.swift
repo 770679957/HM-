@@ -85,7 +85,7 @@ extension PicturePickerController {
 
 // MARK: - PicturePickerCellDelegate
 extension PicturePickerController: PicturePickerCellDelegate {
-    private func picturePickerCellDidAdd(cell: PicturePickerCell) {
+    fileprivate func picturePickerCellDidAdd(cell: PicturePickerCell) {
         
         //判断是否允许访问相册
         if !UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
@@ -102,7 +102,7 @@ extension PicturePickerController: PicturePickerCellDelegate {
         
         present(picker, animated: true, completion: nil)
     }
-     private func picturePickerCellDidRemove(cell: PicturePickerCell) {
+    fileprivate func picturePickerCellDidRemove(cell: PicturePickerCell) {
         //print("删除照片")
         //获取照片索引
         // 1. 获取照片索引
@@ -151,12 +151,13 @@ extension PicturePickerController: UIImagePickerControllerDelegate, UINavigation
 
 /// PicturePickerCellDelegate 代理
 /// 如果协议中包含 optional 的函数，协议需要使用 @objc 修饰
-@objc private protocol PicturePickerCellDelegate: NSObjectProtocol {
+@objc
+private protocol PicturePickerCellDelegate: NSObjectProtocol {
     /// 添加照片
-    @objc optional func picturePickerCellDidAdd(cell: PicturePickerCell)
+    func picturePickerCellDidAdd(cell: PicturePickerCell)
     
     /// 删除照片
-    @objc optional func picturePickerCellDidRemove(cell: PicturePickerCell)
+    func picturePickerCellDidRemove(cell: PicturePickerCell)
 }
 
 /// 照片选择 Cell - private修饰类，内部的一切方法和属性，都是私有的
@@ -178,10 +179,10 @@ private class PicturePickerCell: UICollectionViewCell {
     @objc func addPicture() {
         
         
-        pictureDelegate?.picturePickerCellDidAdd?(cell: self)
+        pictureDelegate?.picturePickerCellDidAdd(cell: self)
     }
     @objc func removePicture(){
-        pictureDelegate?.picturePickerCellDidRemove?(cell: self)
+        pictureDelegate?.picturePickerCellDidRemove(cell: self)
     }
     override init(frame: CGRect) {
         super.init(frame:frame)

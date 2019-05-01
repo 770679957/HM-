@@ -73,7 +73,7 @@ class ComposeViewController: UIViewController {
         //参照： https://www.jianshu.com/p/d97d5ddcf7b5
         let text = textView.emoticonText + "http://www.mob.com/downloads/"
         //发布微博
-        let image = UIImage(named: "123")
+        let image = picturePickerController.pictures.last
         NetworkTools.sharedTools.sendStatus(status: text, image: image) { (result,error) -> () in
             if error != nil {
                 print("出错了")
@@ -102,7 +102,8 @@ class ComposeViewController: UIViewController {
         }
         // 2. 修改文本视图的约束 - 重建约束，会将之前`textView`的所有的约束删除
         textView.snp_remakeConstraints { (make) -> Void in
-            make.top.equalTo(self.snp_topLayoutGuideBottom)
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+           // make.top.equalTo(self.snp_topLayoutGuideBottom)
             make.left.equalTo(view.snp_left)
             make.right.equalTo(view.snp_right)
             make.bottom.equalTo(picturePickerController.view.snp_top)
@@ -165,9 +166,10 @@ extension ComposeViewController:UITextViewDelegate {
 
 //设置界面
 private extension ComposeViewController {
-    
-    
     func setupUI() {
+        
+        // 0. 取消自动调整滚动视图间距
+        automaticallyAdjustsScrollViewInsets = false
         //设置背景颜色
         view.backgroundColor = UIColor.white
         //设置控件
@@ -176,19 +178,26 @@ private extension ComposeViewController {
         prepareTextView()
         preparePicturePicker()
     }
+    
     //准备照片选择控制器
     private func preparePicturePicker() {
         // 0. 添加子控制器
+        //addChild(picturePickerController)
         addChild(picturePickerController)
         
         //添加视图
-        view.addSubview(picturePickerController.view)
+        //view.addSubview(picturePickerController.view)
         
         // 1. 添加视图
         view.insertSubview(picturePickerController.view, belowSubview: toolbar)
+
         
         // 2. 自动布局
         picturePickerController.view.snp_makeConstraints { (make) -> Void in
+//            make.bottom.equalTo(view.snp_bottom)
+//            make.left.equalTo(view.snp_left)
+//            make.right.equalTo(view.snp_right)
+//            make.height.equalTo(view.snp_height).multipliedBy(0.6)
             make.bottom.equalTo(view.snp_bottom)
             make.left.equalTo(view.snp_left)
             make.right.equalTo(view.snp_right)
@@ -257,7 +266,6 @@ private extension ComposeViewController {
                             ["imageName": "compose_emoticonbutton_background", "actionName": "selectEmoticon"],
                             ["imageName": "compose_addbutton_background"]]
         
-        
         //定义数组items，用于表示所有的子控件
         var items = [UIBarButtonItem]()
         //遍历itemSettings 数组
@@ -285,25 +293,25 @@ private extension ComposeViewController {
         
     }
     
-    //准备文本视图
+    /// 准备文本视图
     private func prepareTextView() {
-        
         view.addSubview(textView)
-        // 添加占位标签
-        textView.addSubview(placeHolderLabel)
         
         textView.snp_makeConstraints { (make) -> Void in
+            //make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.left.equalTo(view.snp_left)
             make.right.equalTo(view.snp_right)
             make.bottom.equalTo(toolbar.snp_top)
         }
         
+        // 添加占位标签
+        textView.addSubview(placeHolderLabel)
+        
         placeHolderLabel.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(textView.snp_top).offset(8)
             make.left.equalTo(textView.snp_left).offset(5)
         }
-       // textView.text = "分享新鲜事..."
     }
-    
+
 }

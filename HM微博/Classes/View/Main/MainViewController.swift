@@ -15,7 +15,7 @@ class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addChildViewControllers()
+        addChild()
         setupComposedButton()
         
         NetworkTools.sharedTools.request(method: HMRequestMethod.POST, URLString: "http://httpbin.org/post", parameters: ["name" : "zhangsan" as AnyObject,"age" : 18 as AnyObject]){(result,error)->() in
@@ -39,27 +39,34 @@ class MainViewController: UITabBarController {
 
 }
 //设置界面
-extension MainViewController{
+private extension MainViewController{
     //添加所有控制器
-    private func addChildViewControllers() {
+    private func addChild() {
         //设置tintColor-渲染颜色
         tabBar.tintColor = UIColor.orange
-        addChildViewController(vc:HomeTableViewController(), title: "首页", imageName: "tabbar_home")
-        addChildViewController(vc: MessageTableViewController(), title: "消息", imageName: "tabbar_message_center")
+        addChild(vc:HomeTableViewController(), title: "首页", imageName: "tabbar_home")
+        addChild(vc: MessageTableViewController(), title: "消息", imageName: "tabbar_message_center")
         //添加空视图控制器
         addChild(UIViewController())
-        addChildViewController(vc: DiscoverTableViewController(), title: "发现", imageName: "tabbar_discover")
-        addChildViewController(vc: ProfileTableViewController(), title: "我", imageName: "tabbar_profile")
+        addChild(vc: DiscoverTableViewController(), title: "发现", imageName: "tabbar_discover")
+        addChild(vc: ProfileTableViewController(), title: "我", imageName: "tabbar_profile")
         
         
     }
-   //添加控制器
-    private func addChildViewController(vc:UIViewController,title:String,imageName:String){
-        //设置标题
+    
+    /// 添加控制器
+    ///
+    /// - parameter vc:        vc
+    /// - parameter title:     标题
+    /// - parameter imageName: 图像名称
+    private func addChild(vc: UIViewController, title: String, imageName: String) {
+        // 设置标题 － 由内至外设置的
         vc.title = title
-        //设置图像
+        
+        // 设置图像
         vc.tabBarItem.image = UIImage(named: imageName)
-        //设置导航器
+        
+        // 导航控制器
         let nav = UINavigationController(rootViewController: vc)
         addChild(nav)
     }

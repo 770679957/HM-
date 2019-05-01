@@ -36,6 +36,7 @@ class StatusRetweetedCell: StatusCell {
         }
     }
     
+    /**
     override func setupUI() {
         super.setupUI()
         contentView.insertSubview(backButton,belowSubview:pictureView)
@@ -60,6 +61,42 @@ class StatusRetweetedCell: StatusCell {
             
         }
     }
+  **/
+    
+}
 
- 
+// MARK: - 设置界面
+extension StatusRetweetedCell {
+    
+    /// 设置界面
+    override func setupUI() {
+        // 调用父类的 setupUI，设置父类控件位置
+        super.setupUI()
+        
+        // 1. 添加控件
+        contentView.insertSubview(backButton, belowSubview: pictureView)
+        contentView.insertSubview(retweetedLabel, aboveSubview: backButton)
+        
+        //2. 自动布局
+        backButton.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(contentLabel.snp_bottom).offset(StatusCellMargin)
+            make.left.equalTo(contentView.snp_left)
+            make.right.equalTo(contentView.snp_right)
+            make.bottom.equalTo(bottomView.snp_top)
+        }
+        
+        retweetedLabel.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(backButton.snp_top).offset(StatusCellMargin)
+            make.left.equalTo(backButton.snp_left).offset(StatusCellMargin)
+        }
+        
+        // 配图视图
+        pictureView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(retweetedLabel.snp_bottom).offset(StatusCellMargin)
+            make.left.equalTo(retweetedLabel.snp_left)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
+        }
+    }
+    
 }
