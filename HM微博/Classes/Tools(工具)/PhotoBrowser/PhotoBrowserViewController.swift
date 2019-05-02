@@ -7,15 +7,30 @@
 //
 
 import UIKit
+
+/// 可重用 Cell 标识符号
+private let PhotoBrowserViewCellId = "PhotoBrowserViewCellId"
+
 /// 照片浏览器
 class PhotoBrowserViewController: UIViewController {
+    
+    //监听方法
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    //保存图片
+    @objc private func save() {
+        print("保存图片")
+        
+    }
+    
     //懒加载控件
-    private lazy var collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    private lazy var collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: PhotoBrowserViewLayout())
     //关闭按钮
     private lazy var closeButton:UIButton = UIButton(title: "关闭", fontSize: 14, color: UIColor.white, imageName: nil, backColor: UIColor.darkGray)
     //保存按钮
     private lazy var saveButton:UIButton = UIButton(title: "保存", fontSize: 14, color: UIColor.white, imageName: nil, backColor: UIColor.darkGray)
-    
     /// 照片 URL 数组
     private var urls: [NSURL]
     /// 当前选中的照片索引
@@ -44,7 +59,22 @@ class PhotoBrowserViewController: UIViewController {
 
         
     }
-    
+    // MARK: - 自定义流水布局
+    private class PhotoBrowserViewLayout: UICollectionViewFlowLayout {
+        
+         override func prepare() {
+            super.prepare()
+            
+            itemSize = collectionView!.bounds.size
+            minimumInteritemSpacing = 0
+            minimumLineSpacing = 0
+            scrollDirection = .horizontal
+            
+            collectionView?.isPagingEnabled = true
+            collectionView?.bounces = false
+            collectionView?.showsHorizontalScrollIndicator = false
+        }
+    }
     
 
 
@@ -75,17 +105,34 @@ private extension PhotoBrowserViewController {
         closeButton.addTarget(self, action: #selector(PhotoBrowserViewController.close), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(PhotoBrowserViewController.save), for: .touchUpInside)
         
+        //准备控件
+        prepareCollectionView()
+    }
+    
+    /// 准备 collectionView
+    private func prepareCollectionView(){
+        //注册可重用cell
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PhotoBrowserViewCellId)
+        //设置数据源
+        collectionView.dataSource = self
         
     }
-    //监听方法
-    @objc private func close() {
-        dismiss(animated: true, completion: nil)
-        
+   
+}
+
+// MARK: - UICollectionViewDataSource
+extension PhotoBrowserViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return urls.count
     }
-    //保存图片
-    @objc private func save() {
-        print("保存图片")
-        
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoBrowserViewCellId, for: indexPath)
+        cell.backgroundColor = UIColor.black
+        return cell
     }
+    
+    
     
 }

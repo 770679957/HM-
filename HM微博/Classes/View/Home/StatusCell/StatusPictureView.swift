@@ -143,7 +143,7 @@ extension StatusPictureView: UICollectionViewDataSource, UICollectionViewDelegat
         let userInfo = [WBStatusSelectedPhotoIndexPathKey: indexPath,WBStatusSelectedPhotoURLsKey: viewModel!.thumbnailUrls] as [String : Any]
 
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self,userInfo: userInfo)
-        print("单机照片\(indexPath)\(viewModel?.thumbnailUrls)")
+        //print("单机照片\(indexPath)\(viewModel?.thumbnailUrls)")
     }
     //返回thumbnailUrls个数，就是图片的个数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
