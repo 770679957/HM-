@@ -32,12 +32,19 @@ extension UIButton {
         setBackgroundImage(UIImage(named:backImageName), for: .normal)
         sizeToFit()
     }
-    convenience init(title:String,fontSize:CGFloat,color:UIColor,imageName:String)
+    convenience init(title:String,fontSize:CGFloat,color:UIColor,imageName:String?,backColor: UIColor? = nil)
     {
         self.init()
+        
         setTitle(title, for: .normal)
         setTitleColor(color, for: .normal)
-        setImage(UIImage(named:imageName), for: .normal)
+        if let imageName = imageName {
+            setImage(UIImage(named: imageName), for: .normal)
+        }
+        
+        // 设置背景颜色
+        backgroundColor = backColor
+    
         titleLabel?.font=UIFont.systemFont(ofSize: fontSize)
         sizeToFit()
         
