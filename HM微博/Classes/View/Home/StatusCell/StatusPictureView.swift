@@ -44,12 +44,12 @@ class StatusPictureView: UICollectionView {
         // 设置数据源 - 自己当自己的数据源
         // 应用场景：自定义视图的小框架
         dataSource = self
+        //设置代理
+        delegate = self
         
         //注册可重用的cell
         register(StatusPictureViewCell.self, forCellWithReuseIdentifier: StatusPictureCellId)
-        
-        
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,7 +135,16 @@ extension StatusPictureView {
 }
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension StatusPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+    //选中照片
+    /// 选中照片
+        //单元格选中响应
+    func collectionView(_ collectionView: UICollectionView,didSelectItemAt indexPath: IndexPath) {
+        
+        let userInfo = [WBStatusSelectedPhotoIndexPathKey: indexPath,WBStatusSelectedPhotoURLsKey: viewModel!.thumbnailUrls] as [String : Any]
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self,userInfo: userInfo)
+        print("单机照片\(indexPath)\(viewModel?.thumbnailUrls)")
+    }
     //返回thumbnailUrls个数，就是图片的个数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.thumbnailUrls?.count ?? 0

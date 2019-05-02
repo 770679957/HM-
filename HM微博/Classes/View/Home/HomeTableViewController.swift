@@ -32,7 +32,18 @@ class HomeTableViewController: VisitorTableViewController {
         loadData()
         prepareTableView()
         
+        //添加监听方法通知
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification),object: nil,queue: nil) {_ in
+            print("2222222")
+            print(Thread.current)
+        }
+        
     }
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     //准备表格
     private func prepareTableView() {
         // 注册可重用 cell

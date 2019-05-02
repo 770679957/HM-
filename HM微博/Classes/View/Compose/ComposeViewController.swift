@@ -37,7 +37,7 @@ class ComposeViewController: UIViewController {
         return tv
     }()
     //占位标签
-    private lazy var placeHolderLabel: UILabel = UILabel(title: "",fontSize:18,color:UIColor.lightGray)
+    private lazy var placeHolderLabel: UILabel = UILabel(title: "分享新鲜事...",fontSize:18,color:UIColor.lightGray)
    
 
     override func viewDidLoad() {

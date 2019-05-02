@@ -110,7 +110,7 @@ extension UserAccountViewModel {
             
             // 保存对象 － 会调用对象的 encodeWithCoder 方法
             NSKeyedArchiver.archiveRootObject(account, toFile: self.accountPath)
-             print(self.accountPath)
+            print(self.accountPath)
             
             // 需要完成回调!!!
             finished(true)
