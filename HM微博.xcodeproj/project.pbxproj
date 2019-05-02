@@ -51,6 +51,7 @@
 		3B59E74222695ACF00B3B4FA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B59E74122695ACF00B3B4FA /* Podfile */; };
 		3B59E74E2269D0EF00B3B4FA /* Pods_HM微博.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */; };
 		3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E74F2269D25100B3B4FA /* NetworkTools.swift */; };
+		3B5B65EF227B1B4F005F584E /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */; };
 		3B672C7D2273F1A2003564B9 /* StatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B672C7C2273F1A2003564B9 /* StatusRetweetedCell.swift */; };
 		3B672C822274A1C3003564B9 /* WBRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B672C812274A1C3003564B9 /* WBRefreshControl.swift */; };
 		3B672C842274A41F003564B9 /* WBRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B672C832274A41F003564B9 /* WBRefreshView.xib */; };
@@ -108,6 +109,7 @@
 		3B59E74B2269CAFC00B3B4FA /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E74F2269D25100B3B4FA /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		3B672C7C2273F1A2003564B9 /* StatusRetweetedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRetweetedCell.swift; sourceTree = "<group>"; };
 		3B672C812274A1C3003564B9 /* WBRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRefreshControl.swift; sourceTree = "<group>"; };
 		3B672C832274A41F003564B9 /* WBRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBRefreshView.xib; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				3B52FD242279CCC2009DD7D9 /* PicturePicker */,
+				3B5B65ED227B1AF9005F584E /* PhotoBrowser */,
 				3B59E74F2269D25100B3B4FA /* NetworkTools.swift */,
 				3B4D4D5A226C99990027C83E /* Common.swift */,
 				3B57DF9C2276F206009A1677 /* Emoticon(表情键盘) */,
@@ -351,6 +354,14 @@
 				3B59E73F226957ED00B3B4FA /* VisitorView.swift */,
 			);
 			path = Visitor;
+			sourceTree = "<group>";
+		};
+		3B5B65ED227B1AF9005F584E /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		3B672C802274A151003564B9 /* RefreshView */ = {
@@ -537,6 +548,7 @@
 				3B57DFAF2276F206009A1677 /* UITextView+Emoticon.swift in Sources */,
 				3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
+				3B5B65EF227B1B4F005F584E /* PhotoBrowserViewController.swift in Sources */,
 				3B57DFB02276F206009A1677 /* EmoticonManager.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
 				3B44C3CE22736121006AEF43 /* StatusNormalCell.swift in Sources */,

@@ -33,9 +33,18 @@ class HomeTableViewController: VisitorTableViewController {
         prepareTableView()
         
         //添加监听方法通知
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification),object: nil,queue: nil) {_ in
-            print("2222222")
-            print(Thread.current)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification),object: nil,queue: nil) {[weak self] (n) -> Void in
+            guard let indexPath = n.userInfo?[WBStatusSelectedPhotoIndexPathKey] as? NSIndexPath else {
+                return
+            }
+            guard let urls = n.userInfo?[WBStatusSelectedPhotoURLsKey] as? [NSURL] else {
+                return
+            }
+            let vc = PhotoBrowserViewController(urls: urls, indexPath: indexPath)
+            //展现
+            self?.present(vc, animated: true, completion: nil)
+           
+            
         }
         
     }
