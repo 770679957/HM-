@@ -40,6 +40,10 @@ class HomeTableViewController: VisitorTableViewController {
             guard let urls = n.userInfo?[WBStatusSelectedPhotoURLsKey] as? [NSURL] else {
                 return
             }
+            //判断cell是否遵守了展现动画协议
+            guard let cell = n.object as? PhotoBrowserPresentDelegate else {
+                return
+            }
             let vc = PhotoBrowserViewController(urls: urls, indexPath: indexPath)
             
             // 1. 设置modal的类型是自定义类型 Transition(转场)
@@ -47,6 +51,8 @@ class HomeTableViewController: VisitorTableViewController {
             
             // 2. 设置动画代理
             vc.transitioningDelegate = self?.photoBrowserAnimator as! UIViewControllerTransitioningDelegate
+            //设置animator的代理参数
+            self?.photoBrowserAnimator.setDelegateParams(presentDelegate: cell, indexPath: indexPath,dismissDelegate: vc)
             //展现
             self?.present(vc, animated: true, completion: nil)
            

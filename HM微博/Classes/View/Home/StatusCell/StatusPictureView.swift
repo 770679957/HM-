@@ -220,3 +220,70 @@ extension StatusPictureView: UICollectionViewDataSource, UICollectionViewDelegat
         
   }
 
+// MARK: - 照片查看器的展现协议
+extension StatusPictureView:PhotoBrowserPresentDelegate {
+    
+    //创建一个参与动画的imageView
+    func imageViewForPresent(indexPath: NSIndexPath) -> UIImageView {
+        
+        let iv = UIImageView()
+        
+        // 1. 设置内容填充模式
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        
+        // 2. 设置图像（缩略图的缓存）- SDWebImage 如果已经存在本地缓存，不会发起网络请求
+        if let url = viewModel?.thumbnailUrls?[indexPath.item] {
+            iv.sd_setImage(with: url as URL, completed: nil)
+           
+        }
+        
+        return iv
+    }
+    //动画起始位置
+    func photoBrowserPresentFromRect(indexPath: NSIndexPath) -> CGRect {
+        //根据indexPath获得当前用户选择的cell
+        let cell = self.cellForItem(at: indexPath as IndexPath)!
+        // 2. 通过 cell ，知道 cell 对应在屏幕上的准确位置
+        let rect = self.convert(cell.frame, to: UIApplication.shared.keyWindow!)
+        //测试转换rect的位置
+        let v = UIView(frame: rect)
+        v.backgroundColor = UIColor.red
+        UIApplication.shared.keyWindow?.addSubview(v)
+        
+        return rect
+        
+    }
+    //、目标位置
+    func photoBrowserPresentToRect(indexPath: NSIndexPath) -> CGRect {
+        //根据缩略图的大小，等比例计算目标位置
+        guard let key = viewModel?.thumbnailUrls?[indexPath.item].absoluteString else{
+            return CGRect.zero
+        }
+        //// 从 sdwebImage 获取本地缓存图片
+        guard let image = SDWebImageManager.shared().imageCache?.imageFromDiskCache(forKey: key) else {
+            return CGRect.zero
+        }
+        //根据图像的大小，计算全屏的大小
+        let w = UIScreen.main.bounds.width
+        let h = image.size.height * w / image.size.width
+        //对高度进行额外处理
+        let screenHeight = UIScreen.main.bounds.height
+        var y: CGFloat = 0
+        if h < screenHeight {       // 图片短，垂直居中显示
+            y = (screenHeight - h) * 0.5
+        }
+        let rect = CGRect(x: 0, y: y, width: w, height: h)
+        
+//        //测试位置
+//        let v = imageViewForPresent(indexPath: indexPath)
+//        v.frame = rect
+//        UIApplication.shared.keyWindow?.addSubview(v)
+//
+        return rect
+        
+    }
+    
+    
+}
+
