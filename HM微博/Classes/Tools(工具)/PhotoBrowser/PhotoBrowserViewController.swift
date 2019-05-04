@@ -33,7 +33,6 @@ class PhotoBrowserViewController: UIViewController {
         //保存图片
         // 2. 保存图片
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(PhotoBrowserViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
-     
     }
     
     @objc private func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject?) {

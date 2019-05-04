@@ -55,8 +55,8 @@ class PhotoBrowserCell: UICollectionViewCell {
                                           placeholderImage: nil,
                                           options: [SDWebImageOptions.retryFailed, SDWebImageOptions.refreshCached],
                                           progress: { (current, total , _) -> Void in
-                                                    print("current\(current)")
-                                                    print("total\(total)")
+                                                    //print("current\(current)")
+                                                    //print("total\(total)")
                                             
                                                     // 更新进度
                                                     DispatchQueue.main.sync {
