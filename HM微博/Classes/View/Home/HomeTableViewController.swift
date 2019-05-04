@@ -41,6 +41,12 @@ class HomeTableViewController: VisitorTableViewController {
                 return
             }
             let vc = PhotoBrowserViewController(urls: urls, indexPath: indexPath)
+            
+            // 1. 设置modal的类型是自定义类型 Transition(转场)
+            vc.modalPresentationStyle = UIModalPresentationStyle.custom
+            
+            // 2. 设置动画代理
+            vc.transitioningDelegate = self?.photoBrowserAnimator as! UIViewControllerTransitioningDelegate
             //展现
             self?.present(vc, animated: true, completion: nil)
            
@@ -138,7 +144,8 @@ class HomeTableViewController: VisitorTableViewController {
         }
     }
     
-    
+    /// 照片查看转场动画代理
+    private lazy var photoBrowserAnimator: PhotoBrowserAnimator = PhotoBrowserAnimator()
 }
 
 //数据源方法

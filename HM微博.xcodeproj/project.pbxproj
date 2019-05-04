@@ -20,6 +20,7 @@
 		3B4D4D5B226C99990027C83E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D4D5A226C99990027C83E /* Common.swift */; };
 		3B512F482270A6B80029532F /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B512F472270A6B80029532F /* Status.swift */; };
 		3B512F4A2270BF040029532F /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B512F492270BF040029532F /* StatusListViewModel.swift */; };
+		3B51BFC4227C79C2008EA267 /* ProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B51BFC3227C79C2008EA267 /* ProgressImageView.swift */; };
 		3B52FD232279CC83009DD7D9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B52FD222279CC83009DD7D9 /* UIImage+Extension.swift */; };
 		3B52FD262279CCC2009DD7D9 /* PicturePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B52FD252279CCC2009DD7D9 /* PicturePickerController.swift */; };
 		3B56B4A4227145BF001ACF69 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56B4A3227145BF001ACF69 /* User.swift */; };
@@ -52,6 +53,8 @@
 		3B59E74E2269D0EF00B3B4FA /* Pods_HM微博.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */; };
 		3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59E74F2269D25100B3B4FA /* NetworkTools.swift */; };
 		3B5B65EF227B1B4F005F584E /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */; };
+		3B5B65F1227B34E6005F584E /* PhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B65F0227B34E6005F584E /* PhotoBrowserCell.swift */; };
+		3B63CDEE227D7A05005FE39F /* PhotoBrowserAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63CDED227D7A05005FE39F /* PhotoBrowserAnimator.swift */; };
 		3B672C7D2273F1A2003564B9 /* StatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B672C7C2273F1A2003564B9 /* StatusRetweetedCell.swift */; };
 		3B672C822274A1C3003564B9 /* WBRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B672C812274A1C3003564B9 /* WBRefreshControl.swift */; };
 		3B672C842274A41F003564B9 /* WBRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B672C832274A41F003564B9 /* WBRefreshView.xib */; };
@@ -72,6 +75,7 @@
 		3B4D4D5A226C99990027C83E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		3B512F472270A6B80029532F /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		3B512F492270BF040029532F /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		3B51BFC3227C79C2008EA267 /* ProgressImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressImageView.swift; sourceTree = "<group>"; };
 		3B52FD222279CC83009DD7D9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3B52FD252279CCC2009DD7D9 /* PicturePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturePickerController.swift; sourceTree = "<group>"; };
 		3B56B4A3227145BF001ACF69 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		3B59E74D2269D0EF00B3B4FA /* Pods_HM微博.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_HM微博.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B59E74F2269D25100B3B4FA /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		3B5B65F0227B34E6005F584E /* PhotoBrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserCell.swift; sourceTree = "<group>"; };
+		3B63CDED227D7A05005FE39F /* PhotoBrowserAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserAnimator.swift; sourceTree = "<group>"; };
 		3B672C7C2273F1A2003564B9 /* StatusRetweetedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRetweetedCell.swift; sourceTree = "<group>"; };
 		3B672C812274A1C3003564B9 /* WBRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRefreshControl.swift; sourceTree = "<group>"; };
 		3B672C832274A41F003564B9 /* WBRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBRefreshView.xib; sourceTree = "<group>"; };
@@ -360,6 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				3B5B65EE227B1B4F005F584E /* PhotoBrowserViewController.swift */,
+				3B5B65F0227B34E6005F584E /* PhotoBrowserCell.swift */,
+				3B51BFC3227C79C2008EA267 /* ProgressImageView.swift */,
+				3B63CDED227D7A05005FE39F /* PhotoBrowserAnimator.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -537,6 +546,7 @@
 				3B4D4D53226C73AA0027C83E /* WelcomeViewController.swift in Sources */,
 				3B56B4AB227151D3001ACF69 /* StatusCellTopView.swift in Sources */,
 				3B4D4D51226C5A7D0027C83E /* NewFeatureCell.swift in Sources */,
+				3B63CDEE227D7A05005FE39F /* PhotoBrowserAnimator.swift in Sources */,
 				3B57DFAD2276F206009A1677 /* EmoticonPackage.swift in Sources */,
 				3B57DF9922767CFA009A1677 /* ComposeViewController.swift in Sources */,
 				3B672C822274A1C3003564B9 /* WBRefreshControl.swift in Sources */,
@@ -548,12 +558,14 @@
 				3B57DFAF2276F206009A1677 /* UITextView+Emoticon.swift in Sources */,
 				3B59E7502269D25100B3B4FA /* NetworkTools.swift in Sources */,
 				3B59E7142268042C00B3B4FA /* AppDelegate.swift in Sources */,
+				3B51BFC4227C79C2008EA267 /* ProgressImageView.swift in Sources */,
 				3B5B65EF227B1B4F005F584E /* PhotoBrowserViewController.swift in Sources */,
 				3B57DFB02276F206009A1677 /* EmoticonManager.swift in Sources */,
 				3B59E73622680DB700B3B4FA /* MessageTableViewController.swift in Sources */,
 				3B44C3CE22736121006AEF43 /* StatusNormalCell.swift in Sources */,
 				3B52FD262279CCC2009DD7D9 /* PicturePickerController.swift in Sources */,
 				3B4D4D59226C89910027C83E /* UILabel+Extension.swift in Sources */,
+				3B5B65F1227B34E6005F584E /* PhotoBrowserCell.swift in Sources */,
 				3B4D4D4F226C188F0027C83E /* NewFeatureViewController.swift in Sources */,
 				3B56B4A4227145BF001ACF69 /* User.swift in Sources */,
 				3B59E73E2269556500B3B4FA /* VisitorTableViewController.swift in Sources */,

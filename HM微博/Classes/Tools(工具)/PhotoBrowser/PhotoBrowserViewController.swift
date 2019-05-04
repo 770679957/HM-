@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /// 可重用 Cell 标识符号
 private let PhotoBrowserViewCellId = "PhotoBrowserViewCellId"
@@ -21,12 +22,29 @@ class PhotoBrowserViewController: UIViewController {
     }
     //保存图片
     @objc private func save() {
-        print("保存图片")
+       // print("保存图片")
+        //拿到图片
+       // let cell = collectionView.visibleCells()[0] as! PhotoBrowserCell
+        let cell = collectionView.visibleCells[0] as! PhotoBrowserCell
+        //imageView中很可能会因为网络问题没有图片 -> 下载需要提示
+        guard let image = cell.imageView.image else {
+            return
+        }
+        //保存图片
+        // 2. 保存图片
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(PhotoBrowserViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
+     
+    }
+    
+    @objc private func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject?) {
         
+        let message = (error == nil) ? "保存成功" : "保存失败"
+        SVProgressHUD.showInfo(withStatus: message)
     }
     
     //懒加载控件
     private lazy var collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: PhotoBrowserViewLayout())
+    
     //关闭按钮
     private lazy var closeButton:UIButton = UIButton(title: "关闭", fontSize: 14, color: UIColor.white, imageName: nil, backColor: UIColor.darkGray)
     //保存按钮
@@ -49,13 +67,17 @@ class PhotoBrowserViewController: UIViewController {
     }
     override func loadView() {
         //设置跟视图
-        view = UIView(frame: UIScreen.main.bounds)
+        var rect = UIScreen.main.bounds
+        rect.size.width += 20
+        view = UIView(frame: rect)
         //设置界面
         setupUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 让 collectionView 滚动到指定位置
+        collectionView.scrollToItem(at: currentIndexPath as IndexPath, at: .centeredHorizontally, animated: false)
 
         
     }
@@ -112,7 +134,7 @@ private extension PhotoBrowserViewController {
     /// 准备 collectionView
     private func prepareCollectionView(){
         //注册可重用cell
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PhotoBrowserViewCellId)
+        collectionView.register(PhotoBrowserCell.self, forCellWithReuseIdentifier: PhotoBrowserViewCellId)
         //设置数据源
         collectionView.dataSource = self
         
@@ -123,16 +145,37 @@ private extension PhotoBrowserViewController {
 // MARK: - UICollectionViewDataSource
 extension PhotoBrowserViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //获取分区数
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+    
+    //获取每个分区里单元格数量
+    func collectionView(_ collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int {
         return urls.count
     }
     
+    //返回每个单元格视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoBrowserViewCellId, for: indexPath)
-        cell.backgroundColor = UIColor.black
+        //获取重用的单元格
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoBrowserViewCellId, for: indexPath) as! PhotoBrowserCell
+ 
+        cell.imageURL = urls[(indexPath as NSIndexPath).item] as URL
+        
+        //cell.backgroundColor = UIColor.black
         return cell
     }
+ 
+}
+
+// MARK: - PhotoBrowserCellDelegate
+extension PhotoBrowserViewController: PhotoBrowserCellDelegate {
     
+    func photoBrowserCellDidZoom(scale: CGFloat) {
+    }
     
+    func photoBrowserCellShouldDismiss() {
+        close()
+    }
     
 }
